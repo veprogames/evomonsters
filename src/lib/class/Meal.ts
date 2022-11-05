@@ -63,13 +63,14 @@ export default class Meal{
     ///
 
     damage(amount: Decimal){
-        this.currentHp = this.currentHp.sub(amount);
-        if(this.currentHp.lte(0)){
-            this.currentHp = this.hp;
-            game.update(g => {
-                g.calories.add(this.calories);
-                return g;
-            });
-        }
+        game.update(g => {
+            this.currentHp = this.currentHp.sub(amount);
+            if(this.currentHp.lte(0)){
+                this.currentHp = this.hp;
+                    g.calories.add(this.calories);
+                    
+            }
+            return g;
+        });
     }
 }
