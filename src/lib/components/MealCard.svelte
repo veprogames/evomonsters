@@ -6,7 +6,7 @@
     export let meal: Meal;
 
     function damage(){
-        meal.damage($game.monster.damage);
+        meal.bite($game.monster);
     }
 </script>
 

@@ -1,6 +1,7 @@
 import Decimal from "break_infinity.js";
 import { get } from "svelte/store";
 import { game, meals } from "../stores";
+import type Monster from "./Monster";
 
 export interface MealDefinition {
     name: string,
@@ -62,15 +63,24 @@ export default class Meal{
 
     ///
 
+    /** Amount of Meters the Monster will grow after eating */
+    get growth(){
+        return this.calories.mul(0.01 / 5 * 0.025);
+    }
+
     damage(amount: Decimal){
         game.update(g => {
             this.currentHp = this.currentHp.sub(amount);
             if(this.currentHp.lte(0)){
                 this.currentHp = this.hp;
                     g.calories.add(this.calories);
-                    
+                g.monster.size = g.monster.size.add(this.growth);
             }
             return g;
         });
+    }
+
+    bite(monster: Monster){
+        this.damage(monster.getBiteDamage(this));
     }
 }
