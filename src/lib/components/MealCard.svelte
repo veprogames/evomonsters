@@ -10,7 +10,14 @@
     }
 </script>
 
-<div on:click={damage} on:keydown={damage} class="card flex flex-col items-center w-fit">
+<div class="card flex flex-col items-center w-fit">
+    <div class="flex justify-between items-center gap-2">
+        <button>&lt;</button>
+        <img src="/images/placeholder.png" alt={meal.name} 
+            class="w-24 h-24 hover:brightness-90 active:brightness-75 transition"
+            on:click={damage} on:keydown={damage}/>
+        <button>&gt;</button>
+    </div>
     <p class="font-semibold">{meal.name}</p>
     <p>HP {F(meal.currentHp)}</p>
     <p>Hardness {F(meal.hardness)}</p>
