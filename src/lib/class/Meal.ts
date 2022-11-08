@@ -5,9 +5,9 @@ import type Monster from "./Monster";
 
 export interface MealDefinition {
     name: string,
-    hp: Decimal,
-    hardness: Decimal,
-    calories: Decimal
+    hp: Decimal|number|string,
+    hardness: Decimal|number|string,
+    calories: Decimal|number|string
 }
 
 export default class Meal{
@@ -28,10 +28,10 @@ export default class Meal{
 
     constructor({name, hp, hardness, calories}: MealDefinition){
         this.name = name;
-        this._hp = hp;
+        this._hp = new Decimal(hp);
         this.currentHp = new Decimal(hp);
-        this._hardness = hardness;
-        this._calories = calories;
+        this._hardness = new Decimal(hardness);
+        this._calories = new Decimal(calories);
     }
 
     static from({name, hp, hardness, calories}: MealDefinition){

@@ -20,7 +20,7 @@
     }
 </script>
 
-<div class="card flex flex-col items-center w-fit">
+<div class="card flex flex-col items-center w-fit gap-1">
     <div class="flex justify-between items-center gap-2">
         <button class:invisible={mealContent.currentlyAtFirst} on:click={previous}>&lt;</button>
         <img src="/images/placeholder.png" alt={meal.name} 
