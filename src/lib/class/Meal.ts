@@ -63,9 +63,8 @@ export default class Meal{
 
     ///
 
-    /** Amount of Meters the Monster will grow after eating */
-    get growth(){
-        return this.calories.mul(0.01 / 5 * 0.025);
+    get mass(){
+        return this.calories.div(5 * 40);
     }
 
     damage(amount: Decimal){
@@ -77,7 +76,7 @@ export default class Meal{
                 if(g.meal.index === g.meal.highest){
                     g.meal.highest++;
                 }
-                g.monster.size = g.monster.size.add(this.growth);
+                g.monster.mass = g.monster.mass.add(this.mass);
             }
             return g;
         });

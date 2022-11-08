@@ -2,17 +2,21 @@ import Decimal from "break_infinity.js";
 import type Meal from "./Meal";
 
 export default class Monster{
-    /** size in meters */
-    size: Decimal = new Decimal(0.01)
+    /** mass */
+    mass: Decimal = new Decimal(1);
 
-    /** size in centimeters */
+    /** size in Meters */
+    get size(){
+        return this.mass.pow(2 / 3).mul(0.01);
+    }
+
     private get sizeCm(){
         return this.size.mul(100);
     }
 
     /** final bite damage without hardness */
     get damage(){
-        return new Decimal(5).mul(this.sizeCm.pow(0.8));
+        return new Decimal(5).mul(this.sizeCm);
     }
 
     getBiteDamage(meal: Meal){

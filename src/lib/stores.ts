@@ -16,6 +16,12 @@ export let meals = writable({
         name: "Donut",
         hp: new Decimal(69),
         hardness: new Decimal(4),
-        calories: new Decimal(17)
+        calories: new Decimal(23)
+    },
+    2: {
+        name: "Fish",
+        hp: new Decimal(145),
+        hardness: new Decimal(9),
+        calories: new Decimal(50)
     }
 } as {[key: number]: MealDefinition})
