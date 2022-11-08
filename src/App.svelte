@@ -5,7 +5,7 @@
     import { F } from "./lib/format";
     import { game } from "./lib/stores";
 
-    $game.currentMeal = Meal.get(0);
+    $game.meal.current = Meal.get(0);
 </script>
 
 <header class="bg-slate-400 dark:bg-slate-700 shadow-md p-4 flex justify-evenly items-center">
@@ -18,7 +18,7 @@
             <MonsterCard monster={$game.monster}/>
         </div>
         <div class="flex justify-center">
-            <MealCard meal={$game.currentMeal}/>
+            <MealCard mealContent={$game.meal}/>
         </div>
         <div class="flex justify-center">
             

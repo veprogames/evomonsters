@@ -5,7 +5,7 @@
 
     export let monster: Monster;
 
-    $: biteDamage = monster.getBiteDamage($game.currentMeal);
+    $: biteDamage = monster.getBiteDamage($game.meal.current);
 </script>
 
 <div class="card flex flex-col items-center gap-4">

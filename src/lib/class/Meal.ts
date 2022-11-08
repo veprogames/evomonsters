@@ -74,6 +74,9 @@ export default class Meal{
             if(this.currentHp.lte(0)){
                 this.currentHp = this.hp;
                     g.calories.add(this.calories);
+                if(g.meal.index === g.meal.highest){
+                    g.meal.highest++;
+                }
                 g.monster.size = g.monster.size.add(this.growth);
             }
             return g;
