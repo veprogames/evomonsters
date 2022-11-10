@@ -24,7 +24,7 @@
     <div class="flex justify-between items-center gap-2">
         <button class:invisible={mealContent.currentlyAtFirst} on:click={previous}>&lt;</button>
         <img src="/images/placeholder.png" alt={meal.name} 
-            class="w-24 h-24 hover:brightness-90 active:brightness-75 transition"
+            class="w-24 h-24 lg:w-36 lg:h-36 hover:brightness-90 active:brightness-75 transition"
             on:click={damage} on:keydown={damage}/>
         <button class:invisible={mealContent.currentlyAtHighest} on:click={next}>&gt;</button>
     </div>
