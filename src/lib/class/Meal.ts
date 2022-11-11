@@ -1,6 +1,7 @@
 import Decimal from "break_infinity.js";
 import { get } from "svelte/store";
 import { game, meals } from "../stores";
+import Achievement from "./achievements/Achievement";
 import type Monster from "./Monster";
 
 export interface MealDefinition {
@@ -77,6 +78,7 @@ export default class Meal{
                     g.meal.highest++;
                 }
                 g.monster.mass = g.monster.mass.add(this.mass);
+                Achievement.checkAll();
             }
             return g;
         });
