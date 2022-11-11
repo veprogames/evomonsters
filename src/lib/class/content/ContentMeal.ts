@@ -1,5 +1,5 @@
-import { game } from "../stores";
-import Meal from "./Meal";
+import { game } from "../../stores";
+import Meal from "../Meal";
 
 export default class ContentMeal{
     current: Meal;

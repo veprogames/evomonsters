@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type ContentMeal from "../class/ContentMeal";
+    import type ContentMeal from "../class/content/ContentMeal";
     import type Meal from "../class/Meal";
     import { F } from "../format";
     import { game } from "../stores";

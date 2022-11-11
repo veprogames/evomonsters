@@ -3,7 +3,8 @@ import Decimal from "break_infinity.js";
 import type Achievement from "./achievements/Achievement";
 import CaloriesAchievement from "./achievements/CaloriesAchievement";
 import MealAchievement from "./achievements/MealAchievement";
-import ContentMeal from "./ContentMeal";
+import ContentCalories from "./content/ContentCalories";
+import ContentMeal from "./content/ContentMeal";
 import GameResource from "./GameResource";
 import type Meal from "./Meal";
 import Monster from "./Monster";
@@ -11,12 +12,8 @@ import CaloriesUpgrade from "./upgrades/CaloriesUpgrade";
 import Upgrade, { UpgradeResource } from "./upgrades/Upgrade";
 
 export default class Game{
-    calories = new GameResource();
     /** The Player */
     monster = new Monster();
-
-    currentMeal: Meal;
-    currentMealIdx: number = 0;
 
     meal = new ContentMeal();
 
@@ -26,14 +23,7 @@ export default class Game{
         new CaloriesAchievement(new Decimal(1000), "Half a day")
     ]
 
-    myUpgrade = new CaloriesUpgrade({
-        getPrice: level => Decimal.pow(2, level),
-        getEffect: level => new Decimal(1 + level),
-        maxLevel: 100,
-        title: "Example Upgrade",
-        description: "lorem ipsum",
-        requiredAchievement: this.achievements[0]
-    });
+    calories = new ContentCalories(this);
 
     get version(){
         return 0;
