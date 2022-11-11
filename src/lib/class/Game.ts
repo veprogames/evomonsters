@@ -3,6 +3,7 @@ import Decimal from "break_infinity.js";
 import type Achievement from "./achievements/Achievement";
 import CaloriesAchievement from "./achievements/CaloriesAchievement";
 import MealAchievement from "./achievements/MealAchievement";
+import ContentAchievements from "./content/ContentAchievements";
 import ContentCalories from "./content/ContentCalories";
 import ContentMeal from "./content/ContentMeal";
 import GameResource from "./GameResource";
@@ -17,11 +18,7 @@ export default class Game{
 
     meal = new ContentMeal();
 
-    achievements: Array<Achievement> = [
-        new MealAchievement(2, "Yummy"),
-        new MealAchievement(5, "Hungry"),
-        new CaloriesAchievement(new Decimal(1000), "Half a day")
-    ]
+    achievements = new ContentAchievements();
 
     calories = new ContentCalories(this);
 
