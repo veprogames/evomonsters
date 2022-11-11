@@ -7,6 +7,7 @@ import ContentMeal from "./ContentMeal";
 import GameResource from "./GameResource";
 import type Meal from "./Meal";
 import Monster from "./Monster";
+import CaloriesUpgrade from "./upgrades/CaloriesUpgrade";
 import Upgrade, { UpgradeResource } from "./upgrades/Upgrade";
 
 export default class Game{
@@ -25,13 +26,13 @@ export default class Game{
         new CaloriesAchievement(new Decimal(1000), "Half a day")
     ]
 
-    myUpgrade = new Upgrade({
+    myUpgrade = new CaloriesUpgrade({
         getPrice: level => Decimal.pow(2, level),
         getEffect: level => new Decimal(1 + level),
-        resource: UpgradeResource.CALORIES,
         maxLevel: 100,
         title: "Example Upgrade",
-        description: "lorem ipsum"
+        description: "lorem ipsum",
+        requiredAchievement: this.achievements[0]
     });
 
     get version(){

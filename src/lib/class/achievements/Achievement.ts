@@ -7,7 +7,7 @@ type AchievementCondition = (game: Game) => boolean;
 export default class Achievement{
     private static eventTarget = new EventTarget();
 
-    condition: AchievementCondition;
+    private condition: AchievementCondition;
     private isUnlocked: boolean = false;
 
     title: string;
@@ -21,11 +21,15 @@ export default class Achievement{
         Achievement.eventTarget.addEventListener("check", () => this.check());
     }
 
-    check(){
+    private check(){
         if(!this.isUnlocked && this.condition(get(game))){
             this.unlock();
             console.log("Unlocked: ", this);
         }
+    }
+
+    get unlocked(){
+        return this.isUnlocked;
     }
 
     unlock(){

@@ -12,7 +12,7 @@ export enum UpgradeResource {
 export interface UpgradeDefinition{
     getPrice: UpgradeCalcPredicate,
     getEffect: UpgradeCalcPredicate,
-    resource: UpgradeResource
+    resource?: UpgradeResource
     maxLevel?: number,
     /** optional, fallback title, can be overridden in components */
     title?: string,
@@ -43,7 +43,7 @@ export default class Upgrade{
     constructor({getPrice, getEffect, maxLevel, resource, title, description}: UpgradeDefinition){
         this.getPrice = getPrice;
         this.getEffect = getEffect;
-        this.resource = resource;
+        this.resource = resource ?? UpgradeResource.CALORIES;
         this._maxLevel = maxLevel ?? Infinity;
         this.title = title ?? "";
         this.description = description ?? "";

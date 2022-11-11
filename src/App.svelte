@@ -28,11 +28,15 @@
             <button>B</button>
             <button>C</button>
             <div>
-                {$game.myUpgrade.title}<br/>
-                {$game.myUpgrade.description}<br/>
-                {$game.myUpgrade.priceDisplay}<br/>
-                {$game.myUpgrade.effectDisplay}<br/>
-                <button on:click={() => $game.myUpgrade.buy()}>Buy</button>
+                {#if $game.myUpgrade.isUnlocked}
+                    {$game.myUpgrade.title}<br/>
+                    {$game.myUpgrade.description}<br/>
+                    {$game.myUpgrade.priceDisplay}<br/>
+                    {$game.myUpgrade.effectDisplay}<br/>
+                    <button on:click={() => $game.myUpgrade.buy()}>Buy</button>
+                {:else}
+                    Upgrade locked!
+                {/if}
             </div>
         </div>
     </div>
