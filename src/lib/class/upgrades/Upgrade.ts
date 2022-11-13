@@ -87,6 +87,10 @@ export default class Upgrade{
         return this.level >= this.maxLevel;
     }
 
+    get canAfford(){
+        return this.resourceAmount.gte(this.price);
+    }
+
     get effectDisplay(){
         if(this.isMaxed){
             return F(this.effect);
@@ -124,7 +128,7 @@ export default class Upgrade{
 
     buy(){
         game.update(g => {
-            if(this.resourceAmount.gte(this.price)){
+            if(this.canAfford){
                 this.subResource(this.price);
                 this.level++;
             }

@@ -5,7 +5,7 @@ import CaloriesUpgrade from "../upgrades/CaloriesUpgrade";
 import type Upgrade from "../upgrades/Upgrade";
 
 export default class ContentCalories extends GameResource{
-    upgrades: {[key: string]: Upgrade}
+    upgrades: {[key: string]: CaloriesUpgrade}
 
     constructor(game: Game){
         super();
@@ -15,7 +15,8 @@ export default class ContentCalories extends GameResource{
                 getEffect: level => new Decimal(level > 0 ? 0.5 + 0.15 * level : 0),
                 requiredAchievement: game.achievements.achievements.yummy,
                 title: "Telekinesis",
-                description: "Automatically bite"
+                description: "Automatically bite",
+                maxLevel: 100
             })
         }
     }

@@ -2,6 +2,8 @@
     import Meal from "./lib/class/Meal";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
+    import CaloriesUpgradeButton from "./lib/components/upgrades/CaloriesUpgradeButton.svelte";
+    import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
     import { game } from "./lib/stores";
 
@@ -21,7 +23,7 @@
             <MealCard mealContent={$game.meal}/>
         </div>
         <div class="flex justify-center">
-            
+            <CaloriesUpgradeButton upgrade={$game.calories.upgrades.telekinesis}/>
         </div>
         <div class="flex justify-evenly items-center">
             <button>A</button>
