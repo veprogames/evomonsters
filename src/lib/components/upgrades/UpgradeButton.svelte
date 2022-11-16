@@ -1,5 +1,6 @@
 <script lang="ts">
     import type Upgrade from "../../class/upgrades/Upgrade";
+    import Tooltip from "../Tooltip.svelte";
 
     export let upgrade: Upgrade;
     export let icon: string = "/images/placeholder.png";
@@ -18,8 +19,7 @@
             {upgrade.level}
         {/if}
     </span>
-    <!-- Tooltip -->
-    <div class="tooltip">
+    <Tooltip>
         <slot name="title">
             <span class="text-blue-400 font-semibold">{upgrade.title}</span>
         </slot>
@@ -34,5 +34,5 @@
                 <img src={currencyIcon} alt="Currency Icon" class="h-6 w-auto inline"/> {upgrade.priceDisplay}
             </p>
         </slot>
-    </div>
+    </Tooltip>
 </button>
