@@ -5,11 +5,8 @@ import ContentMeal from "./content/ContentMeal";
 import Monster from "./Monster";
 
 export default class Game implements JSONifier{
-    get JSONreplaced(): object {
-        return {
-            version: this.version,
-            monster: this.monster
-        };
+    get replaceKeys(): string[] {
+        return ["version", "monster"];
     }
 
     revive(obj: any): void {

@@ -3,12 +3,12 @@ import type JSONifier from "../savegame/JSONifier";
 import type Meal from "./Meal";
 
 export default class Monster implements JSONifier{
-    get JSONreplaced(): object {
-        return {mass: this.mass};
+    get replaceKeys(): string[] {
+        return ["mass"];
     }
 
     revive(obj: any): void {
-        this.mass = obj.mass.mul(2) ?? new Decimal(1);
+        this.mass = obj.mass ?? new Decimal(1);
     }
 
     /** mass */

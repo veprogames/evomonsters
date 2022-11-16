@@ -6,6 +6,17 @@ function implementsJSONifier(value: any): value is JSONifier{
     return typeof value === "object" && "revive" in value && "JSONreplaced" in value;
 }
 
+/** Take the string[] replaceKeys and map them to an object */
+function replace(object: object){
+    let result = {};
+    if(implementsJSONifier(object)){
+        for(const k of object.replaceKeys){
+            result[k] = object[k];
+        }
+    }
+    return result;
+}
+
 function replacer(this: any, key: any, value: any){
     const v = this[key];
     if(!v){
@@ -15,7 +26,7 @@ function replacer(this: any, key: any, value: any){
         return `[D]${value.toString()}`;
     }
     if(implementsJSONifier(v)){
-        return value.JSONreplaced;
+        return replace(v);
     }
     return value;
 }
