@@ -3,6 +3,14 @@ import type JSONifier from "../savegame/JSONifier";
 import type Meal from "./Meal";
 
 export default class Monster implements JSONifier{
+    get reviveKeys(): string[] {
+        return [];
+    }
+
+    get reviveProps(): string[] {
+        return ["mass"];
+    }
+
     get replaceKeys(): string[] {
         return ["mass"];
     }

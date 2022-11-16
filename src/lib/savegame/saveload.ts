@@ -1,9 +1,12 @@
 import Decimal from "break_infinity.js";
-import type Game from "../class/Game";
+import Game from "../class/Game";
 import type JSONifier from "./JSONifier";
 
 function implementsJSONifier(value: any): value is JSONifier{
-    return typeof value === "object" && "revive" in value && "JSONreplaced" in value;
+    return typeof value === "object" && 
+        "reviveKeys" in value && 
+        "reviveProps" in value && 
+        "replaceKeys" in value;
 }
 
 /** Take the string[] replaceKeys and map them to an object */
@@ -15,6 +18,21 @@ function replace(object: object){
         }
     }
     return result;
+}
+
+function revive(data: object, applyTo: object){
+    if(implementsJSONifier(applyTo)){
+        for(const k of applyTo.reviveKeys){
+            revive(data[k], applyTo[k]);
+        }
+        for(const k of applyTo.reviveProps){            
+            if(applyTo[k]){
+                console.log(k, data[k]);
+                
+                applyTo[k] = data[k];
+            }
+        }
+    }
 }
 
 function replacer(this: any, key: any, value: any){
@@ -40,12 +58,15 @@ function reviver(this: any, key: any, value: any){
 
 export function saveGame(game: Game){
     const stringified = JSON.stringify(game, replacer);
-    console.log(stringified);
     return stringified;
 }
 
-export function loadGame(jsonString: string, game: Game){
+export function loadGame(jsonString: string){
     const parsed = JSON.parse(jsonString, reviver);
-    console.log(parsed);
-    game.revive(parsed);
+    let g = new Game();
+    revive(parsed, g);
+    console.log(g);
+    
+    return g;
+    //game.revive(parsed);
 }

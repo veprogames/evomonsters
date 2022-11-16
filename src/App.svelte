@@ -34,7 +34,7 @@
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
             <button on:click={() => saveGame($game)}>Save</button>
-            <button on:click={() => loadGame(saveGame($game), $game)}>SaveLoad</button>
+            <button on:click={() => loadGame(saveGame($game))}>SaveLoad</button>
         </div>
     </div>
 </main>
