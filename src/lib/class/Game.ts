@@ -12,8 +12,8 @@ export default class Game implements JSONifier{
         };
     }
 
-    revive(): void {
-        this.monster = new Monster();
+    revive(obj: any): void {
+        this.monster.revive(obj.monster);
     }
 
     /** The Player */

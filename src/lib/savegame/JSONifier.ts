@@ -1,4 +1,4 @@
 export default interface JSONifier{
     get JSONreplaced(): object;
-    revive(): void;
+    revive(obj: any): void;
 }

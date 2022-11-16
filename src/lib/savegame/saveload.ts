@@ -36,4 +36,5 @@ export function saveGame(game: Game){
 export function loadGame(jsonString: string, game: Game){
     const parsed = JSON.parse(jsonString, reviver);
     console.log(parsed);
+    game.revive(parsed);
 }

@@ -7,8 +7,8 @@ export default class Monster implements JSONifier{
         return {mass: this.mass};
     }
 
-    revive(): void {
-        this.mass = new Decimal(1);
+    revive(obj: any): void {
+        this.mass = obj.mass.mul(2) ?? new Decimal(1);
     }
 
     /** mass */
