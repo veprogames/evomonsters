@@ -5,17 +5,9 @@ import ContentMeal from "./content/ContentMeal";
 import Monster from "./Monster";
 
 export default class Game implements JSONifier{
-    get savedObjects(): string[] {
-        return ["monster"];
-    }
-
-    get savedProps(): string[] {
-        return [];
-    }
-
-    get extraKeys(): string[] {
-        return ["version"];
-    }
+    readonly savedObjects = ["monster"];
+    readonly savedProps = [];
+    readonly extraKeys = ["version"];
 
     /** The Player */
     monster = new Monster();

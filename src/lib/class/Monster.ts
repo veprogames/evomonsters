@@ -3,13 +3,8 @@ import type JSONifier from "../savegame/JSONifier";
 import type Meal from "./Meal";
 
 export default class Monster implements JSONifier{
-    get savedProps(): string[] {
-        return ["mass"];
-    }
-
-    get savedObjects(): string[] {
-        return [];
-    }
+    readonly savedProps = ["mass"];
+    readonly savedObjects = [];
 
     revive(obj: any): void {
         this.mass = obj.mass ?? new Decimal(1);
