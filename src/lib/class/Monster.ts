@@ -1,7 +1,16 @@
 import Decimal from "break_infinity.js";
+import type JSONifier from "../savegame/JSONifier";
 import type Meal from "./Meal";
 
-export default class Monster{
+export default class Monster implements JSONifier{
+    get JSONreplaced(): object {
+        return {mass: this.mass};
+    }
+
+    revive(): void {
+        this.mass = new Decimal(1);
+    }
+
     /** mass */
     mass: Decimal = new Decimal(1);
 

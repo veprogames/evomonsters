@@ -9,6 +9,7 @@
     import LockedUpgrade from "./lib/components/upgrades/LockedUpgrade.svelte";
     import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
+    import { loadGame, saveGame } from "./lib/savegame/saveload";
     import { game, tabs } from "./lib/stores";
 
     $game.meal.current = Meal.get(0);
@@ -32,6 +33,8 @@
         <div class="flex justify-evenly items-center">
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
+            <button on:click={() => saveGame($game)}>Save</button>
+            <button on:click={() => loadGame(saveGame($game), $game)}>SaveLoad</button>
         </div>
     </div>
 </main>
