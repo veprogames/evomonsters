@@ -4,16 +4,18 @@ import type JSONifier from "./JSONifier";
 
 function implementsJSONifier(value: any): value is JSONifier{
     return typeof value === "object" && 
-        "reviveKeys" in value && 
-        "reviveProps" in value && 
-        "replaceKeys" in value;
+        "savedObjects" in value && 
+        "savedProps" in value;
 }
 
 /** Take the string[] replaceKeys and map them to an object */
 function replace(object: object){
     let result = {};
     if(implementsJSONifier(object)){
-        for(const k of object.replaceKeys){
+        const allKeys = object.savedProps
+            .concat(object.savedObjects)
+            .concat(object.extraKeys ?? []);
+        for(const k of allKeys){
             result[k] = object[k];
         }
     }
@@ -22,13 +24,11 @@ function replace(object: object){
 
 function revive(data: object, applyTo: object){
     if(implementsJSONifier(applyTo)){
-        for(const k of applyTo.reviveKeys){
+        for(const k of applyTo.savedObjects){
             revive(data[k], applyTo[k]);
         }
-        for(const k of applyTo.reviveProps){            
+        for(const k of applyTo.savedProps){
             if(applyTo[k]){
-                console.log(k, data[k]);
-                
                 applyTo[k] = data[k];
             }
         }
@@ -58,6 +58,8 @@ function reviver(this: any, key: any, value: any){
 
 export function saveGame(game: Game){
     const stringified = JSON.stringify(game, replacer);
+    console.log(stringified);
+    
     return stringified;
 }
 
@@ -66,7 +68,5 @@ export function loadGame(jsonString: string){
     let g = new Game();
     revive(parsed, g);
     console.log(g);
-    
     return g;
-    //game.revive(parsed);
 }

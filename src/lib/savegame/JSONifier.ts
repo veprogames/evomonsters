@@ -1,9 +1,10 @@
 export default interface JSONifier{
-    get replaceKeys(): string[];
+    /** Any extra keys that are not calculated from savedObjects/Props */
+    readonly extraKeys?: string[];
     /** Properties that will be revived */
-    get reviveKeys(): string[];
+    get savedObjects(): string[];
     /** Properties that will be assigned */
-    get reviveProps(): string[];
+    get savedProps(): string[];
     /** Individual revive logic */
     revive?(obj: any): void;
 }
