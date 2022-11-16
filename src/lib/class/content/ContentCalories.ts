@@ -16,7 +16,11 @@ export default class ContentCalories extends GameResource{
                 requiredAchievement: game.achievements.achievements.yummy,
                 title: "Telekinesis",
                 description: "Automatically bite",
-                maxLevel: 100
+                maxLevel: 100,
+                effectDisplay: {
+                    suffix: "/s",
+                    places1000: 2
+                }
             })
         }
     }

@@ -9,6 +9,13 @@ export enum UpgradeResource {
     CALORIES
 }
 
+export interface UpgradeEffectDisplayDefinition{
+    prefix?: string,
+    suffix?: string,
+    places?: number,
+    places1000?: number
+}
+
 export interface UpgradeDefinition{
     getPrice: UpgradeCalcPredicate,
     getEffect: UpgradeCalcPredicate,
@@ -17,7 +24,8 @@ export interface UpgradeDefinition{
     /** optional, fallback title, can be overridden in components */
     title?: string,
     /** optional, fallback description, can be overridden in components */
-    description?: string
+    description?: string,
+    effectDisplay?: UpgradeEffectDisplayDefinition
 }
 
 export default class Upgrade{
@@ -38,15 +46,24 @@ export default class Upgrade{
     getPrice: UpgradeCalcPredicate;
     getEffect: UpgradeCalcPredicate;
 
-    resource: UpgradeResource
+    resource: UpgradeResource;
 
-    constructor({getPrice, getEffect, maxLevel, resource, title, description}: UpgradeDefinition){
+    private _effectDisplayDefinition: UpgradeEffectDisplayDefinition
+
+    constructor({getPrice, getEffect, maxLevel, resource, title, description, effectDisplay}: UpgradeDefinition){
         this.getPrice = getPrice;
         this.getEffect = getEffect;
         this.resource = resource ?? UpgradeResource.CALORIES;
         this._maxLevel = maxLevel ?? Infinity;
         this.title = title ?? "";
         this.description = description ?? "";
+
+        this._effectDisplayDefinition = {
+            prefix: effectDisplay?.prefix ?? "",
+            suffix: effectDisplay?.suffix ?? "",
+            places: effectDisplay?.places ?? 2,
+            places1000: effectDisplay?.places1000 ?? 0
+        };
 
         this.recalculate();
         Upgrade.eventTarget.addEventListener("check", () => this.recalculate());
@@ -92,10 +109,14 @@ export default class Upgrade{
     }
 
     get effectDisplay(){
+        const p = this._effectDisplayDefinition.prefix;
+        const s = this._effectDisplayDefinition.suffix;
+        const places = this._effectDisplayDefinition.places;
+        const places1000 = this._effectDisplayDefinition.places1000;
         if(this.isMaxed){
-            return F(this.effect);
+            return `${p}${F(this.effect, places, places1000)}${s}`;
         }
-        return `${F(this.effect)} -> ${F(this.effectNext)}`;
+        return `${p}${F(this.effect, places, places1000)}${s} -> ${p}${F(this.effectNext, places, places1000)}${s}`;
     }
 
     get priceDisplay(){

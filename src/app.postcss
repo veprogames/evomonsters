@@ -9,9 +9,16 @@ body{
 }
 
 button{
-    @apply bg-slate-300 dark:bg-slate-600 rounded-md p-2
-        hover:brightness-90 active:brightness-75 
-        dark:hover:brightness-110 dark:active:brightness-125 transition;
+    @apply bg-slate-300 dark:bg-slate-600 rounded-md p-2 transition;
+}
+
+button:disabled{
+    @apply brightness-75;
+}
+
+button:not(:disabled){
+    @apply hover:brightness-90 active:brightness-75 
+        dark:hover:brightness-110 dark:active:brightness-125;
 }
 
 h1 {
@@ -33,4 +40,10 @@ h3 {
 
 .card-transparent{
     @apply bg-black bg-opacity-75 text-slate-50 rounded-md p-4;
+}
+
+.upgrade-tooltip{
+    @apply scale-0 group-hover:scale-100 transition-transform origin-top-left
+        absolute left-full top-0 w-40 z-10
+        text-left card-transparent;
 }

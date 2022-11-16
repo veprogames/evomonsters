@@ -3,6 +3,7 @@
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import CaloriesUpgradeButton from "./lib/components/upgrades/CaloriesUpgradeButton.svelte";
+    import LockedUpgrade from "./lib/components/upgrades/LockedUpgrade.svelte";
     import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
     import { game } from "./lib/stores";
