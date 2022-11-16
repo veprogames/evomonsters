@@ -1,5 +1,6 @@
 <script lang="ts">
     import Meal from "./lib/class/Meal";
+    import AchievementComp from "./lib/components/AchievementComp.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import CaloriesUpgradeButton from "./lib/components/upgrades/CaloriesUpgradeButton.svelte";
@@ -25,6 +26,7 @@
         </div>
         <div class="flex justify-center">
             <CaloriesUpgradeButton upgrade={$game.calories.upgrades.telekinesis}/>
+            <AchievementComp achievement={$game.achievements.achievements.yummy}></AchievementComp>
         </div>
         <div class="flex justify-evenly items-center">
             <button>A</button>

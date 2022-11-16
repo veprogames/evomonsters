@@ -19,7 +19,7 @@
         {/if}
     </span>
     <!-- Tooltip -->
-    <div class="upgrade-tooltip">
+    <div class="tooltip">
         <slot name="title">
             <span class="text-blue-400 font-semibold">{upgrade.title}</span>
         </slot>
