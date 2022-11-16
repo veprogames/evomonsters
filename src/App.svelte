@@ -3,11 +3,13 @@
     import AchievementComp from "./lib/components/AchievementComp.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
+    import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
+    import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
     import CaloriesUpgradeButton from "./lib/components/upgrades/CaloriesUpgradeButton.svelte";
     import LockedUpgrade from "./lib/components/upgrades/LockedUpgrade.svelte";
     import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
-    import { game } from "./lib/stores";
+    import { game, tabs } from "./lib/stores";
 
     $game.meal.current = Meal.get(0);
 </script>
@@ -25,13 +27,11 @@
             <MealCard mealContent={$game.meal}/>
         </div>
         <div class="flex justify-center">
-            <CaloriesUpgradeButton upgrade={$game.calories.upgrades.telekinesis}/>
-            <AchievementComp achievement={$game.achievements.achievements.yummy}></AchievementComp>
+            <svelte:component this={$tabs.caloriesTab}/>
         </div>
         <div class="flex justify-evenly items-center">
-            <button>A</button>
-            <button>B</button>
-            <button>C</button>
+            <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
+            <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
         </div>
     </div>
 </main>
