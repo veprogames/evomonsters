@@ -4,7 +4,6 @@ import type Meal from "./Meal";
 
 export default class Monster implements JSONifier{
     readonly savedProps = ["mass"];
-    readonly savedObjects = [];
 
     revive(obj: any): void {
         this.mass = obj.mass ?? new Decimal(1);

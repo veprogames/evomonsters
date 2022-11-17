@@ -3,8 +3,7 @@ import Game from "../class/Game";
 import type JSONifier from "./JSONifier";
 
 function implementsJSONifier(value: any): value is JSONifier{
-    return typeof value === "object" && 
-        "savedObjects" in value && 
+    return typeof value === "object" &&
         "savedProps" in value;
 }
 
@@ -13,7 +12,6 @@ function replace(object: object){
     let result = {};
     if(implementsJSONifier(object)){
         const allKeys = object.savedProps
-            .concat(object.savedObjects)
             .concat(object.extraKeys ?? []);
         for(const k of allKeys){
             result[k] = object[k];
@@ -24,11 +22,11 @@ function replace(object: object){
 
 function revive(data: object, applyTo: object){
     if(implementsJSONifier(applyTo)){
-        for(const k of applyTo.savedObjects){
-            revive(data[k], applyTo[k]);
-        }
         for(const k of applyTo.savedProps){
-            if(applyTo[k]){
+            if(implementsJSONifier(applyTo[k])){
+                revive(data[k], applyTo[k]);
+            }
+            else if(applyTo[k]){
                 applyTo[k] = data[k];
             }
         }
