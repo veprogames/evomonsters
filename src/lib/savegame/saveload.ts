@@ -12,7 +12,7 @@ function replace(object: object){
     let result = {};
     if(implementsJSONifier(object)){
         const allKeys = object.savedProps
-            .concat(object.extraKeys ?? []);
+            .concat(object.extraProps ?? []);
         for(const k of allKeys){
             result[k] = object[k];
         }
@@ -35,7 +35,7 @@ function revive(data: object, applyTo: object){
 
 function replacer(this: any, key: any, value: any){
     const v = this[key];
-    if(!v){
+    if(v === undefined || v === null){
         return undefined;
     }
     if(v instanceof Decimal){
@@ -44,7 +44,7 @@ function replacer(this: any, key: any, value: any){
     if(implementsJSONifier(v)){
         return replace(v);
     }
-    return value;
+    return v;
 }
 
 function reviver(this: any, key: any, value: any){
