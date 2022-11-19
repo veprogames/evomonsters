@@ -1,6 +1,7 @@
 import Decimal, { type DecimalSource } from "break_infinity.js";
 import { get } from "svelte/store";
 import { F } from "../../format";
+import type JSONifier from "../../savegame/JSONifier";
 import { game } from "../../stores";
 
 type UpgradeCalcPredicate = (level: number) => Decimal;
@@ -28,7 +29,9 @@ export interface UpgradeDefinition{
     effectDisplay?: UpgradeEffectDisplayDefinition
 }
 
-export default class Upgrade{
+export default class Upgrade implements JSONifier{
+    readonly savedProps: string[] = ["_level"];
+
     private static eventTarget = new EventTarget();
 
     /** optional, fallback title, can be overridden in components */
@@ -159,5 +162,9 @@ export default class Upgrade{
 
     static checkAll(){
         this.eventTarget.dispatchEvent(new Event("check"));
+    }
+
+    revive(obj: any): void {
+        this.level = obj._level ?? 0;
     }
 }

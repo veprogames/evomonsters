@@ -20,14 +20,20 @@ function replace(object: object){
     return result;
 }
 
-function revive(data: object, applyTo: object){
+export function revive(data: object, applyTo: object){
     if(implementsJSONifier(applyTo)){
-        for(const k of applyTo.savedProps){
-            if(implementsJSONifier(applyTo[k])){
-                revive(data[k], applyTo[k]);
-            }
-            else if(applyTo[k]){
-                applyTo[k] = data[k];
+        // if object implements custom revive logic
+        if("revive" in applyTo){
+            applyTo.revive(data);
+        }
+        else{
+            for(const k of applyTo.savedProps){
+                if(implementsJSONifier(applyTo[k])){
+                    revive(data[k], applyTo[k]);
+                }
+                else if(applyTo[k]){
+                    applyTo[k] = data[k];
+                }
             }
         }
     }
