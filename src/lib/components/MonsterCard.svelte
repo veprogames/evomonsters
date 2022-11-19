@@ -8,9 +8,9 @@
     $: biteDamage = monster.getBiteDamage($game.meal.current);
 </script>
 
-<div class="card flex flex-col items-center gap-1">
-    <img src="/images/placeholder.png" alt="Monster" class="w-24 h-24 lg:w-36 lg:h-36"/>
-    <p class="font-semibold">Young Monster</p>
+<div class="card-transparent flex flex-col items-center gap-1">
+    <img src="/images/monster/0.png" alt="Monster" class="w-28 h-28 lg:w-44 lg:h-44"/>
+    <p class="font-semibold">Hatchling</p>
     <p>Size: {FSize(monster.size, 2, 2)}</p>
     <p>Bite Dmg: {F(biteDamage)}</p>
 </div>

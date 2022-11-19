@@ -23,11 +23,13 @@
     onDestroy(() => ticker.stop());
 </script>
 
-<header class="bg-slate-400 dark:bg-slate-700 shadow-md p-4 flex justify-evenly items-center">
+<header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1>Evomonsters</h1>
-    <span>Calories: {F($game.calories.amount, 2)}</span>
+    <span><img src="/images/resources/calories.png" class="w-12 h-12 -translate-y-1 inline"/> Calories: {F($game.calories.amount, 2)}</span>
 </header>
 <main class="p-4">
+    <img src="/images/bg/picnic.webp" alt="Background" class="absolute -z-50 left-0 top-0 w-full h-full object-cover"
+        style="mask-image: linear-gradient(to bottom, white, transparent);"/>
     <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4">
         <div class="flex justify-center">
             <MonsterCard monster={$game.monster}/>
@@ -45,6 +47,6 @@
         </div>
     </div>
 </main>
-<footer class="bg-slate-400 dark:bg-slate-700 p-4 fixed bottom-0 w-full">
+<footer class="bg-black bg-opacity-70 text-slate-50 p-4 fixed bottom-0 w-full">
     Version {$game.version}
 </footer>
