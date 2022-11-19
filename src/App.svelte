@@ -9,9 +9,16 @@
     import LockedUpgrade from "./lib/components/upgrades/LockedUpgrade.svelte";
     import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
+    import { loadFromStorage, loadGame, saveGame } from "./lib/savegame/saveload";
     import { game, tabs } from "./lib/stores";
 
     $game.meal.current = Meal.get(0);
+
+    const loaded = loadFromStorage();
+    if(loaded){
+        console.log("Loaded and revived from localStorage:", loaded);
+        $game = loaded;
+    }
 </script>
 
 <header class="bg-slate-400 dark:bg-slate-700 shadow-md p-4 flex justify-evenly items-center">
@@ -32,6 +39,7 @@
         <div class="flex justify-evenly items-center">
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
+            <button on:click={() => saveGame($game)}>Save Game</button>
         </div>
     </div>
 </main>

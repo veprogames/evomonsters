@@ -1,10 +1,13 @@
 import Decimal from "break_infinity.js";
+import type JSONifier from "../../savegame/JSONifier";
 import type Game from "../Game";
 import GameResource from "../GameResource";
 import CaloriesUpgrade from "../upgrades/CaloriesUpgrade";
 import type Upgrade from "../upgrades/Upgrade";
 
-export default class ContentCalories extends GameResource{
+export default class ContentCalories extends GameResource implements JSONifier{
+    readonly savedProps = ["_amount", "_highest", "_total", "upgrades"];
+    
     upgrades: {[key: string]: CaloriesUpgrade}
 
     constructor(game: Game){
@@ -22,6 +25,13 @@ export default class ContentCalories extends GameResource{
                     places1000: 2
                 }
             })
+        }
+    }
+
+    revive(data: any){
+        super.revive(data);
+        for(const k of Object.keys(this.upgrades)){
+            this.upgrades[k].revive(data.upgrades[k]);
         }
     }
 }

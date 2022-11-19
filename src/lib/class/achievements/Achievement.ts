@@ -1,15 +1,17 @@
 import { get } from "svelte/store";
+import type JSONifier from "../../savegame/JSONifier";
 import { game } from "../../stores";
 import type Game from "../Game";
 
 type AchievementCondition = (game: Game) => boolean;
 
-export default class Achievement{
+export default class Achievement implements JSONifier{
     private static eventTarget = new EventTarget();
+    readonly savedProps = ["unlocked"];
 
     private condition: AchievementCondition;
-    private isUnlocked: boolean = false;
-
+    
+    unlocked: boolean = false;
     title: string;
     description: string;
 
@@ -22,22 +24,18 @@ export default class Achievement{
     }
 
     private check(){
-        if(!this.isUnlocked && this.condition(get(game))){
+        if(!this.unlocked && this.condition(get(game))){
             this.unlock();
             console.log("Unlocked: ", this);
         }
     }
 
-    get unlocked(){
-        return this.isUnlocked;
-    }
-
     unlock(){
-        this.isUnlocked = true;
+        this.unlocked = true;
     }
 
     lock(){
-        this.isUnlocked = false;
+        this.unlocked = false;
     }
 
     static checkAll(){
