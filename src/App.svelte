@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onDestroy, onMount, tick } from "svelte";
+    import GameTicker from "./lib/class/GameTicker";
     import Meal from "./lib/class/Meal";
     import AchievementComp from "./lib/components/AchievementComp.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
@@ -19,6 +21,13 @@
         console.log("Loaded and revived from localStorage:", loaded);
         $game = loaded;
     }
+
+    const ticker = new GameTicker();
+
+    onMount(() => {
+        ticker.start();
+    });
+    onDestroy(() => ticker.stop());
 </script>
 
 <header class="bg-slate-400 dark:bg-slate-700 shadow-md p-4 flex justify-evenly items-center">
