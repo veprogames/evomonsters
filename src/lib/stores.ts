@@ -11,7 +11,7 @@ export let meals = writable({
         name: "Berries",
         hp: 22,
         hardness: 0,
-        calories: 5000
+        calories: 5
     },
     1: {
         name: "Apple",
