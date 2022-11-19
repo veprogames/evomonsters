@@ -9,6 +9,10 @@ export default class ContentMeal implements JSONifier{
     index: number = 0;
     highest: number = 0;
 
+    constructor(){
+        this.current = Meal.get(0);
+    }
+
     get currentlyAtFirst(){
         return this.index <= 0;
     }

@@ -1,20 +1,13 @@
 <script lang="ts">
     import { onDestroy, onMount, tick } from "svelte";
     import GameTicker from "./lib/class/GameTicker";
-    import Meal from "./lib/class/Meal";
-    import AchievementComp from "./lib/components/AchievementComp.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
     import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
-    import CaloriesUpgradeButton from "./lib/components/upgrades/CaloriesUpgradeButton.svelte";
-    import LockedUpgrade from "./lib/components/upgrades/LockedUpgrade.svelte";
-    import UpgradeButton from "./lib/components/upgrades/UpgradeButton.svelte";
     import { F } from "./lib/format";
-    import { loadFromStorage, loadGame, saveGame } from "./lib/savegame/saveload";
+    import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
     import { game, tabs } from "./lib/stores";
-
-    $game.meal.current = Meal.get(0);
 
     const loaded = loadFromStorage();
     if(loaded){
