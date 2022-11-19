@@ -21,6 +21,10 @@
 </script>
 
 <div class="card-transparent flex flex-col items-center w-fit gap-1">
+    <p class="text-2xl">
+        <span class="font-black text-green-400">#</span>
+        <span class="font-semibold">{mealContent.index + 1}</span>
+    </p>
     <div class="flex justify-between items-center gap-4">
         <button class:invisible={mealContent.currentlyAtFirst} on:click={previous}>&lt;</button>
         <img src={meal.iconPath} alt={meal.name} 
