@@ -14,7 +14,7 @@ export default class Monster implements JSONifier{
 
     /** size in Meters */
     get size(){
-        return this.mass.pow(2 / 3).mul(0.01);
+        return this.mass.pow(0.5).mul(0.01);
     }
 
     private get sizeCm(){
