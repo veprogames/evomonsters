@@ -25,6 +25,10 @@
     onDestroy(() => ticker.stop());
 </script>
 
+<svelte:head>
+    <title>{F($game.calories.amount)} Calories | Evomonsters</title>
+</svelte:head>
+
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1>Evomonsters</h1>
     <div class="relative flex justify-center items-center gap-1 group">
