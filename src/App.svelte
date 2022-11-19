@@ -1,10 +1,12 @@
 <script lang="ts">
     import { onDestroy, onMount, tick } from "svelte";
     import GameTicker from "./lib/class/GameTicker";
+    import Icon from "./lib/components/Icon.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
     import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
+    import Tooltip from "./lib/components/Tooltip.svelte";
     import { F } from "./lib/format";
     import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
     import { game, tabs } from "./lib/stores";
@@ -25,7 +27,11 @@
 
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1>Evomonsters</h1>
-    <span><img src="/images/resources/calories.png" class="w-12 h-12 -translate-y-1 inline"/> Calories: {F($game.calories.amount, 2)}</span>
+    <div class="relative flex justify-center items-center gap-1 group">
+        <Icon src="/images/resources/calories.png"/>
+        <span class="text-2xl font-semibold">{F($game.calories.amount)}</span>
+        <Tooltip>Calories</Tooltip>
+    </div>
 </header>
 <main class="p-4">
     <img src="/images/bg/picnic.webp" alt="Background" class="absolute -z-50 left-0 top-0 w-full h-full object-cover"

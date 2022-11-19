@@ -30,9 +30,9 @@
         <button class:invisible={mealContent.currentlyAtHighest} on:click={next}>&gt;</button>
     </div>
     <p class="font-semibold">{meal.name}</p>
-    <p>HP {F(meal.currentHp)}</p>
-    <p>Hardness {F(meal.hardness)}</p>
-    <p>Calories {F(meal.calories)}</p>
+    <p><span class="stat orange">HP</span> {F(meal.currentHp)}</p>
+    <p><span class="stat blue">Hardness</span> {F(meal.hardness)}</p>
+    <p><span class="stat green">Calories</span> {F(meal.calories)}</p>
 </div>
 
 <style lang="postcss">
