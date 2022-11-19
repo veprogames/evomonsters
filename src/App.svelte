@@ -16,7 +16,7 @@
 
     const loaded = loadFromStorage();
     if(loaded){
-        console.log(loaded);
+        console.log("Loaded and revived from localStorage:", loaded);
         $game = loaded;
     }
 </script>

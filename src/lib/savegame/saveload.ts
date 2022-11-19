@@ -70,7 +70,7 @@ export function getSaveCode(game: Game){
 
 export function saveGame(game: Game){
     const code = getSaveCode(game);
-    localStorage.setItem("veprogames.evomonsters.default", code);
+    localStorage.setItem("veprogames.evomonsters.game.default", code);
     console.log("Saved to localStorage:", code);
     return code;
 }
@@ -96,9 +96,9 @@ export function loadGame(saveString: string){
 }
 
 export function loadFromStorage(): Game|null{
-    const item = localStorage.getItem("veprogames.evomonsters.default");
+    const item = localStorage.getItem("veprogames.evomonsters.game.default");
     if(item){
-        return loadGame(localStorage.getItem("veprogames.evomonsters.default"));
+        return loadGame(localStorage.getItem("veprogames.evomonsters.game.default"));
     }
     return null;
 }
