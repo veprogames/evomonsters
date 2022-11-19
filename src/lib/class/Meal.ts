@@ -7,7 +7,8 @@ export interface MealDefinition {
     name: string,
     hp: Decimal|number|string,
     hardness: Decimal|number|string,
-    calories: Decimal|number|string
+    calories: Decimal|number|string,
+    icon?: string
 }
 
 export default class Meal{
@@ -25,17 +26,19 @@ export default class Meal{
     private _hp: Decimal
     private _hardness: Decimal
     private _calories: Decimal
+    private _icon: string
 
-    constructor({name, hp, hardness, calories}: MealDefinition){
+    constructor({name, hp, hardness, calories, icon}: MealDefinition){
         this.name = name;
         this._hp = new Decimal(hp);
         this.currentHp = new Decimal(hp);
         this._hardness = new Decimal(hardness);
         this._calories = new Decimal(calories);
+        this._icon = icon ?? "default.png";
     }
 
-    static from({name, hp, hardness, calories}: MealDefinition){
-        return new Meal({name, hp, hardness, calories});
+    static from({name, hp, hardness, calories, icon}: MealDefinition){
+        return new Meal({name, hp, hardness, calories, icon});
     }
 
     /** get a Meal from the meals store */
@@ -67,6 +70,10 @@ export default class Meal{
         return this.calories.div(5 * 40);
     }
 
+    get iconPath(){
+        return `/images/meals/${this._icon}`;
+    }
+
     damage(amount: Decimal){
         game.update(g => {
             this.currentHp = this.currentHp.sub(amount);
@@ -93,60 +100,77 @@ export const meals = {
         name: "Berries",
         hp: 22,
         hardness: 0,
-        calories: 5
+        calories: 5,
+        icon: "berries.png"
     },
     1: {
         name: "Apple",
         hp: 69,
         hardness: 4,
-        calories: 23
+        calories: 42,
+        icon: "apple.png"
     },
     2: {
         name: "Bacon",
         hp: 145,
         hardness: 11,
-        calories: 50
+        calories: 175,
+        icon: "bacon.png"
     },
     3: {
         name: "Muffin",
         hp: 242,
         hardness: 19,
-        calories: 111
+        calories: 404,
+        icon: "muffin.png"
     },
     4: {
         name: "Banana",
         hp: 303,
-        hardness: 23,
-        calories: 160
+        hardness: 20,
+        calories: 600,
+        icon: "banana.png"
     },
     5: {
         name: "Burger",
         hp: 500,
-        hardness: 36,
-        calories: 404
+        hardness: 30,
+        calories: 1600,
+        icon: "burger.png"
     },
     6: {
         name: "Steak",
         hp: 830,
-        hardness: 50,
-        calories: 900
+        hardness: 40,
+        calories: 4000,
+        icon: "steak.png"
     },
     7: {
         name: "Fish",
         hp: 1200,
-        hardness: 80,
-        calories: 1500
+        hardness: 58,
+        calories: 8000,
+        icon: "fish.png"
     },
     8: {
         name: "Chicken",
-        hp: 2300,
-        hardness: 190,
-        calories: 3100
+        hp: 3000,
+        hardness: 150,
+        calories: 50000,
+        icon: "chicken.png"
     },
     9: {
+        name: "Sheep",
+        hp: 5000,
+        hardness: 250,
+        calories: 100000,
+        icon: "sheep.png"
+    },
+    10: {
         name: "Cow",
-        hp: 4200,
+        hp: 7777,
         hardness: 333,
-        calories: 7000
+        calories: 199999,
+        icon: "cow.png"
     }
 } as {[key: number]: MealDefinition};

@@ -23,7 +23,7 @@
 <div class="card-transparent flex flex-col items-center w-fit gap-1">
     <div class="flex justify-between items-center gap-4">
         <button class:invisible={mealContent.currentlyAtFirst} on:click={previous}>&lt;</button>
-        <img src="/images/meals/0.png" alt={meal.name} 
+        <img src={meal.iconPath} alt={meal.name} 
             class="w-24 h-24 lg:w-36 lg:h-36 rounded-full hover:brightness-90 active:brightness-75 transition"
             draggable="false"
             on:click={damage} on:keydown={damage}/>
