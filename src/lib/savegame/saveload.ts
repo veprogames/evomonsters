@@ -60,17 +60,45 @@ function reviver(this: any, key: any, value: any){
     return value;
 }
 
-export function saveGame(game: Game){
-    const stringified = JSON.stringify(game, replacer);
-    console.log(stringified);
-    
-    return stringified;
+export function getSavestringified(game: Game){
+    return JSON.stringify(game, replacer);
 }
 
-export function loadGame(jsonString: string){
-    const parsed = JSON.parse(jsonString, reviver);
+export function getSaveCode(game: Game){
+    return btoa(unescape(encodeURIComponent(getSavestringified(game))));
+}
+
+export function saveGame(game: Game){
+    const code = getSaveCode(game);
+    localStorage.setItem("veprogames.evomonsters.default", code);
+    console.log("Saved to localStorage:", code);
+    return code;
+}
+
+function decodeSaveCode(encoded: string){
+    return decodeURIComponent(escape(atob(encoded)));
+}
+
+export function loadGame(saveString: string){
+    let decoded: string, parsed: object;
+    try{
+        decoded = decodeSaveCode(saveString);
+        parsed = JSON.parse(decoded, reviver);
+    }
+    catch(err){
+        console.warn(err);
+        window.alert(err);
+    }
+    
     let g = new Game();
     revive(parsed, g);
-    console.log(g);
     return g;
+}
+
+export function loadFromStorage(): Game|null{
+    const item = localStorage.getItem("veprogames.evomonsters.default");
+    if(item){
+        return loadGame(localStorage.getItem("veprogames.evomonsters.default"));
+    }
+    return null;
 }

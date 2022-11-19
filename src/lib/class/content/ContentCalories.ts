@@ -6,7 +6,7 @@ import CaloriesUpgrade from "../upgrades/CaloriesUpgrade";
 import type Upgrade from "../upgrades/Upgrade";
 
 export default class ContentCalories extends GameResource implements JSONifier{
-    readonly savedProps = ["_current", "_highest", "_total", "upgrades"];
+    readonly savedProps = ["_amount", "_highest", "_total", "upgrades"];
     
     upgrades: {[key: string]: CaloriesUpgrade}
 
