@@ -22,6 +22,10 @@ export default class ContentAchievements implements JSONifier{
         hungry: new MealAchievement(7, "Hungry"),
         halfADay: new CaloriesAchievement(new Decimal(1000), "Half a day"),
         mooh: new MealAchievement(10, "Mooh"),
+        manyDays: new CaloriesAchievement(new Decimal(2e6), "Many Days (or about one year)"),
+        foodOverflow: new CaloriesAchievement(new Decimal(1e9), "Food overflow!"),
+        toSpace: new MealAchievement(19, "To Space!"),
+        endHunger: new CaloriesAchievement(new Decimal(1e12), "End World Hunger")
     }
 
     get countUnlocked(){
