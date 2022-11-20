@@ -1,7 +1,7 @@
 <script lang="ts">
     import { game } from "../stores";
 
-    $: src = $game.meal.index >= 11 ? "/images/bg/street.webp" : "/images/bg/picnic.webp";
+    $: src = $game.meal.index >= 12 ? "/images/bg/street.webp" : "/images/bg/picnic.webp";
 </script>
 
 <img {src} alt="Background" class="absolute -z-50 left-0 top-0 w-full h-full object-cover"

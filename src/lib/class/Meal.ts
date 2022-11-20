@@ -172,5 +172,54 @@ export const meals = {
         hardness: 333,
         calories: 199999,
         icon: "cow.png"
+    },
+    11: {
+        name: "Elephant",
+        hp: 10000,
+        hardness: 500,
+        calories: 275000,
+        icon: "elephant.png"
+    },
+    12: {
+        name: "Car",
+        hp: 14500,
+        hardness: 800,
+        calories: 500000,
+        icon: "car.png"
+    },
+    13: {
+        name: "Ship",
+        hp: 25000,
+        hardness: 1300,
+        calories: 1.2e6,
+        icon: "ship.png"
+    },
+    14: {
+        name: "House",
+        hp: 42000,
+        hardness: 2222,
+        calories: 4.2e6,
+        icon: "house.png"
+    },
+    15: {
+        name: "Monster Truck",
+        hp: 64000,
+        hardness: 3500,
+        calories: 6.9e6,
+        icon: "monstertruck.png"
+    },
+    16: {
+        name: "Helicopter",
+        hp: 90000,
+        hardness: 5000,
+        calories: 12e6,
+        icon: "helicopter.png"
+    },
+    17: {
+        name: "Train",
+        hp: 150000,
+        hardness: 7000,
+        calories: 23e6,
+        icon: "train.png"
     }
 } as {[key: number]: MealDefinition};
