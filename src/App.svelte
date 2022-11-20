@@ -32,30 +32,30 @@
 </svelte:head>
 
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
-    <h1>Evomonsters</h1>
+    <h1 class="hidden md:block">Evomonsters</h1>
     <div class="relative flex justify-center items-center gap-1 group">
         <Icon src="/images/resources/calories.png"/>
         <span class="text-2xl font-semibold">{F($game.calories.amount)}</span>
         <Tooltip>Calories</Tooltip>
     </div>
 </header>
-<main class="p-4">
+<main class="p-4 pb-16">
     <GameBackground/>
-    <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4 lg:gap-8">
         <div class="flex justify-center">
             <MonsterCard monster={$game.monster}/>
         </div>
         <div class="flex justify-center">
             <MealCard mealContent={$game.meal}/>
         </div>
-        <div class="flex justify-center">
-            <svelte:component this={$tabs.caloriesTab}/>
-        </div>
-        <div class="flex justify-evenly items-center">
+        <div class="flex justify-center items-center flex-wrap gap-4">
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
             <button on:click={() => $tabs.caloriesTab = TabEvolution}>Evolution</button>
             <button on:click={() => saveGame($game)}>Save Game</button>
+        </div>
+        <div class="flex justify-center">
+            <svelte:component this={$tabs.caloriesTab}/>
         </div>
     </div>
 </main>
