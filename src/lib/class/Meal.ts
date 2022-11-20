@@ -1,4 +1,5 @@
 import Decimal from "break_infinity.js";
+import { get } from "svelte/store";
 import { game } from "../stores";
 import Achievement from "./achievements/Achievement";
 import type Monster from "./Monster";
@@ -57,7 +58,8 @@ export default class Meal{
     }
 
     get hardness(){
-        return this._hardness;
+        const g = get(game);
+        return this._hardness.div(g.calories.upgrades.piercing.effect);
     }
 
     get calories(){
@@ -242,5 +244,33 @@ export const meals = {
         hardness: 75000,
         calories: 800e6,
         icon: "skyscraper.png"
+    },
+    21: {
+        name: "Pyramid",
+        hp: 2.2e6,
+        hardness: 120000,
+        calories: 1.8e9,
+        icon: "pyramid.png"
+    },
+    22: {
+        name: "Village",
+        hp: 5e6,
+        hardness: 250000,
+        calories: 6.6e9,
+        icon: "village.png"
+    },
+    23: {
+        name: "Small Mountain",
+        hp: 12e6,
+        hardness: 750000,
+        calories: 24e9,
+        icon: "small_mountain.png"
+    },
+    24: {
+        name: "City",
+        hp: 25e6,
+        hardness: 2.4e6,
+        calories: 66e9,
+        icon: "city.png"
     }
 } as {[key: number]: MealDefinition};

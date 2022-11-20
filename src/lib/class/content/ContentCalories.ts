@@ -26,11 +26,21 @@ export default class ContentCalories extends GameResource implements JSONifier{
                 }
             }),
             strongTeeth: new CaloriesUpgrade({
-                getPrice: level => Decimal.pow(10, level).mul(5e6),
+                getPrice: level => Decimal.pow(16, level).mul(4e6),
                 getEffect: level => Decimal.pow(1.25, level),
                 requiredAchievement: game.achievements.achievements.mooh,
                 title: "Strong Teeth",
                 description: "Increase Bite Damage"
+            }),
+            piercing: new CaloriesUpgrade({
+                getPrice: level => Decimal.pow(20, level ** 1.1).mul(100e9),
+                getEffect: level => Decimal.pow(1.2, level),
+                requiredAchievement: game.achievements.achievements.village,
+                title: "Piercing",
+                description: "Decrease Food Hardness",
+                effectDisplay: {
+                    prefix: "/"
+                }
             })
         }
     }
