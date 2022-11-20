@@ -8,7 +8,7 @@
 </script>
 
 <button disabled={!upgrade.canAfford} on:click={() => upgrade.buy()}
-    class="hidden lg:inline-flex justify-center items-start relative w-20 h-20 group"
+    class="inline-flex justify-center items-start relative w-20 h-20 group"
     class:error={!upgrade.canAfford}>
     <img src={icon} alt="Icon" class="w-3/4 h-3/4"/>
     <span class="absolute -translate-x-1/2 left-1/2 bottom-0.5">
