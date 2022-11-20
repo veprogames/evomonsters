@@ -1,5 +1,7 @@
 import Decimal from "break_infinity.js";
+import { get } from "svelte/store";
 import type JSONifier from "../savegame/JSONifier";
+import { game } from "../stores";
 import type Meal from "./Meal";
 
 export default class Monster implements JSONifier{
@@ -23,7 +25,8 @@ export default class Monster implements JSONifier{
 
     /** final bite damage without hardness */
     get damage(){
-        return new Decimal(5).mul(this.sizeCm);
+        const g = get(game);
+        return new Decimal(5).mul(this.sizeCm).mul(g.calories.upgrades.strongTeeth.effect);
     }
 
     getBiteDamage(meal: Meal){

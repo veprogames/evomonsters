@@ -20,7 +20,8 @@ export default class ContentAchievements implements JSONifier{
     achievements: AchievementMap = {
         yummy: new MealAchievement(3, "Yummy"),
         hungry: new MealAchievement(7, "Hungry"),
-        halfADay: new CaloriesAchievement(new Decimal(1000), "Half a day")
+        halfADay: new CaloriesAchievement(new Decimal(1000), "Half a day"),
+        mooh: new MealAchievement(10, "Mooh"),
     }
 
     get percentComplete(){

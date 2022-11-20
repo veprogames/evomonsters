@@ -24,13 +24,20 @@ export default class ContentCalories extends GameResource implements JSONifier{
                     suffix: "/s",
                     places1000: 2
                 }
+            }),
+            strongTeeth: new CaloriesUpgrade({
+                getPrice: level => Decimal.pow(10, level).mul(5e6),
+                getEffect: level => Decimal.pow(1.25, level),
+                requiredAchievement: game.achievements.achievements.mooh,
+                title: "Strong Teeth",
+                description: "Increase Bite Damage"
             })
         }
     }
 
     revive(data: any){
         super.revive(data);
-        for(const k of Object.keys(this.upgrades)){
+        for(const k of Object.keys(data.upgrades)){
             this.upgrades[k].revive(data.upgrades[k]);
         }
     }

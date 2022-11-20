@@ -4,4 +4,7 @@
     import CaloriesUpgradeButton from "../upgrades/CaloriesUpgradeButton.svelte";
 </script>
 
-<CaloriesUpgradeButton upgrade={$game.calories.upgrades.telekinesis} icon="/images/upgrades/telekinsesis.png"/>
+<div class="flex justify-center gap-4 flex-wrap">
+    <CaloriesUpgradeButton upgrade={$game.calories.upgrades.telekinesis} icon="/images/upgrades/telekinsesis.png"/>
+    <CaloriesUpgradeButton upgrade={$game.calories.upgrades.strongTeeth} icon="/images/upgrades/teeth.png"/>
+</div>
