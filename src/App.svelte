@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onDestroy, onMount, tick } from "svelte";
     import GameTicker from "./lib/class/GameTicker";
+    import GameBackground from "./lib/components/GameBackground.svelte";
     import Icon from "./lib/components/Icon.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
@@ -38,8 +39,7 @@
     </div>
 </header>
 <main class="p-4">
-    <img src="/images/bg/picnic.webp" alt="Background" class="absolute -z-50 left-0 top-0 w-full h-full object-cover"
-        style="mask-image: linear-gradient(to bottom, white, transparent);"/>
+    <GameBackground/>
     <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-4">
         <div class="flex justify-center">
             <MonsterCard monster={$game.monster}/>
