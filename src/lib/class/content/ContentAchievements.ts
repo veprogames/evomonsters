@@ -24,8 +24,13 @@ export default class ContentAchievements implements JSONifier{
         mooh: new MealAchievement(10, "Mooh"),
     }
 
+    get countUnlocked(){
+        const achievements = Object.values(this.achievements);
+        return achievements.filter(ach => ach.unlocked).length;
+    }
+
     get percentComplete(){
         const achievements = Object.values(this.achievements);
-        return achievements.filter(ach => ach.unlocked).length / achievements.length;
+        return this.countUnlocked / achievements.length;
     }
 }

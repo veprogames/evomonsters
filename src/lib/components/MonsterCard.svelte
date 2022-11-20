@@ -6,11 +6,14 @@
     export let monster: Monster;
 
     $: biteDamage = monster.getBiteDamage($game.meal.current);
+    $: evolution = monster.evolution;
+    $: monsterIcon = `/images/monster/${evolution.icon}`;
 </script>
 
 <div class="card-transparent flex flex-col items-center gap-1">
-    <img src="/images/monster/0.png" alt="Monster" class="w-28 h-28 lg:w-44 lg:h-44"/>
-    <p class="font-semibold">Hatchling</p>
+    <img src={monsterIcon} alt="Monster" class="w-28 h-28 lg:w-44 lg:h-44"/>
+    <p class="font-semibold">{evolution.name}</p>
     <p><span class="stat blue">Size</span> {FSize(monster.size, 2, 2)}</p>
     <p><span class="stat green">Bite Dmg</span> {F(biteDamage)}</p>
+    <p><span class="stat orange">Evoscore</span> {monster.evoMonsterScore.toLocaleString("en-US")}</p>
 </div>

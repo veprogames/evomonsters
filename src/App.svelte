@@ -7,6 +7,7 @@
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
     import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
+    import TabEvolution from "./lib/components/tabs/TabEvolution.svelte";
     import Tooltip from "./lib/components/Tooltip.svelte";
     import { F } from "./lib/format";
     import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
@@ -53,6 +54,7 @@
         <div class="flex justify-evenly items-center">
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
+            <button on:click={() => $tabs.caloriesTab = TabEvolution}>Evolution</button>
             <button on:click={() => saveGame($game)}>Save Game</button>
         </div>
     </div>
