@@ -7,19 +7,21 @@
     export let currencyIcon: string = "/images/placeholder.png";
 </script>
 
-<button disabled={!upgrade.canAfford} on:click={() => upgrade.buy()}
-    class="inline-flex justify-center items-start relative w-20 h-20 group"
-    class:error={!upgrade.canAfford}>
-    <img src={icon} alt="Icon" class="w-12 h-12 rounded-md"/>
-    <span class="absolute -translate-x-1/2 left-1/2 bottom-0">
-        {#if upgrade.isMaxed}
-            Max
-        {:else if upgrade.maxLevel < Infinity}
-            {upgrade.level}/{upgrade.maxLevel}
-        {:else}
-            {upgrade.level}
-        {/if}
-    </span>
+<div class="relative group w-20 h-20">
+    <button disabled={!upgrade.canAfford} on:click={() => upgrade.buy()}
+        class="inline-flex justify-center items-start relative w-20 h-20"
+        class:error={!upgrade.canAfford}>
+        <img src={icon} alt="Icon" class="w-12 h-12 rounded-md"/>
+        <span class="absolute -translate-x-1/2 left-1/2 bottom-0">
+            {#if upgrade.isMaxed}
+                Max
+            {:else if upgrade.maxLevel < Infinity}
+                {upgrade.level}/{upgrade.maxLevel}
+            {:else}
+                {upgrade.level}
+            {/if}
+        </span>
+    </button>
     <Tooltip>
         <slot name="title">
             <span class="text-blue-400 font-semibold">{upgrade.title}</span>
@@ -36,4 +38,4 @@
             </p>
         </slot>
     </Tooltip>
-</button>
+</div>
