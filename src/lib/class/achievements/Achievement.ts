@@ -34,8 +34,8 @@ export default class Achievement implements JSONifier{
         this.unlocked = true;
     }
 
-    lock(){
-        this.unlocked = false;
+    revive(obj: any): void {
+        this.unlocked = obj.unlocked;
     }
 
     static checkAll(){

@@ -13,7 +13,7 @@ export default class ContentAchievements implements JSONifier{
 
     revive(data: any){
         for(const k of Object.keys(data.achievements)){
-            this.achievements[k].unlocked = data.achievements[k].unlocked;
+            this.achievements[k].revive(data.achievements[k]);
         }
     }
 
