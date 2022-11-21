@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onDestroy, onMount, tick } from "svelte";
+    import { isMobile } from "./ismobile";
     import GameTicker from "./lib/class/GameTicker";
     import GameBackground from "./lib/components/GameBackground.svelte";
     import Icon from "./lib/components/Icon.svelte";
@@ -60,5 +61,5 @@
     </div>
 </main>
 <footer class="bg-black bg-opacity-40 text-slate-50 p-4 fixed bottom-0 w-full text-center">
-    Version {$game.version} ◦ Work in progress
+    Version {$game.version} ◦ Work in progress <br/> Platform: {isMobile() ? "Mobile" : "Desktop"}
 </footer>

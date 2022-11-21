@@ -1,14 +1,29 @@
 <script lang="ts">
+    import { isMobile } from "../../../ismobile";
     import type Upgrade from "../../class/upgrades/Upgrade";
     import Tooltip from "../Tooltip.svelte";
 
     export let upgrade: Upgrade;
     export let icon: string = "/images/placeholder.png";
     export let currencyIcon: string = "/images/placeholder.png";
+
+    function buy(){
+        if(!isMobile()){
+            upgrade.buy();
+        }
+    }
+
+    function buyMobile(){
+        if(isMobile()){
+            upgrade.buy();
+        }
+    }
 </script>
 
 <div class="relative group w-20 h-20">
-    <button disabled={!upgrade.canAfford} on:click={() => upgrade.buy()}
+    <button disabled={!upgrade.canAfford}
+        on:click={buy}
+        on:dblclick={buyMobile}
         class="inline-flex justify-center items-start relative w-20 h-20"
         class:error={!upgrade.canAfford}>
         <img src={icon} alt="Icon" class="w-12 h-12 rounded-md"/>
