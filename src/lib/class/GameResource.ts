@@ -13,9 +13,12 @@ export default class GameResource implements JSONifier{
     private _totalThisRun = new Decimal(0)
 
     set amount(amnt: Decimal){
-        this._total = this._highestThisRun = this._total.add(Decimal.max(0, amnt.sub(this._amount)));
+        const gain = Decimal.max(0, amnt.sub(this._amount));
+        this._total = this._total.add(gain);
+        this._totalThisRun = this._totalThisRun.add(gain);
         this._amount = amnt;
-        this._highest = this._highestThisRun = Decimal.max(amnt, this._highest);
+        this._highest = Decimal.max(amnt, this._highest);
+        this._highestThisRun = Decimal.max(amnt, this._highestThisRun);
     }
 
     add(amnt: Decimal){
