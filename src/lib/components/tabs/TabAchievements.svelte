@@ -18,7 +18,7 @@
         <AchievementComp achievement={achievements.halfADay} icon="/images/achievements/food.png"></AchievementComp>
         <AchievementComp achievement={achievements.manyDays} icon="/images/achievements/food.png"></AchievementComp>
         <AchievementComp achievement={achievements.foodOverflow} icon="/images/achievements/food.png"></AchievementComp>
-        <AchievementComp achievement={achievements.endHunger} icon="/images/achievements/food.png"></AchievementComp>
+        <AchievementComp achievement={achievements.assimilation} icon="/images/achievements/food.png"></AchievementComp>
     </div>
 </div>
 
