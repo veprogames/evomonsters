@@ -116,14 +116,14 @@ export const meals = {
         name: "Bacon",
         hp: 145,
         hardness: 11,
-        calories: 175,
+        calories: 190,
         icon: "bacon.png"
     },
     3: {
         name: "Muffin",
         hp: 242,
         hardness: 19,
-        calories: 404,
+        calories: 375,
         icon: "muffin.png"
     },
     4: {
@@ -200,7 +200,7 @@ export const meals = {
         name: "House",
         hp: 42000,
         hardness: 2222,
-        calories: 4e6,
+        calories: 2.5e6,
         icon: "house.png"
     },
     15: {
@@ -263,14 +263,28 @@ export const meals = {
         name: "Small Mountain",
         hp: 12e6,
         hardness: 750000,
-        calories: 24e9,
+        calories: 15e9,
         icon: "small_mountain.png"
     },
     24: {
         name: "City",
         hp: 25e6,
         hardness: 2.4e6,
-        calories: 66e9,
+        calories: 40e9,
+        icon: "city.png"
+    },
+    25: {
+        name: "Space Station",
+        hp: 42e6,
+        hardness: 4e6,
+        calories: 100e9,
+        icon: "city.png"
+    },
+    26: {
+        name: "Small Asteroid",
+        hp: 75e6,
+        hardness: 10e6,
+        calories: 250e9,
         icon: "city.png"
     }
 } as {[key: number]: MealDefinition};

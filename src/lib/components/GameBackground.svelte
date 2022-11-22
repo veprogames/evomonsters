@@ -18,6 +18,10 @@
         {
             index: 18,
             image: "city.webp"
+        },
+        {
+            index: 25,
+            image: "earth.webp"
         }
     ].reverse();
 

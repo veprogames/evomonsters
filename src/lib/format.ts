@@ -6,6 +6,7 @@ const notation = new ADNotations.StandardNotation();
 const distanceUnits: Array<[number, string]> = [
     [0.01, "cm"],
     [1, "m"],
+    [1000, "km"],
     [12_756_000, "Earths"],
     [138_346_500, "Jupiters"],
     [1_392_684_000, "Suns"]
