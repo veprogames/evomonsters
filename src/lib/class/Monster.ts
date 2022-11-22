@@ -40,7 +40,8 @@ export default class Monster implements JSONifier{
         const g = get(game);
         const achievements = 1 + 0.25 * g.achievements.countUnlocked;
         const meal = 1 + 0.05 * g.meal.highest;
-        return Math.floor(100 * g.calories.highest.log10() * achievements * meal);
+        const highestCalories = Decimal.max(g.calories.highest, 1);
+        return Math.floor(100 * highestCalories.log10() * achievements * meal);
     }
 
     private get evolutionIndex(){
