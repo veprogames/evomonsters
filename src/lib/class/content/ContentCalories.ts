@@ -48,7 +48,9 @@ export default class ContentCalories extends GameResource implements JSONifier{
     revive(data: any){
         super.revive(data);
         for(const k of Object.keys(data.upgrades)){
-            this.upgrades[k].revive(data.upgrades[k]);
+            if(this.upgrades[k]){
+                this.upgrades[k].revive(data.upgrades[k]);
+            }
         }
     }
 }
