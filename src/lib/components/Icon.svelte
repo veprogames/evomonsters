@@ -3,4 +3,4 @@
     export let alt = "icon";
 </script>
 
-<img {src} {alt} class="w-12 h-12 inline"/>
+<img {src} {alt} class="w-[1.75em] h-[1.75em] inline"/>

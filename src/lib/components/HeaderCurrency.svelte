@@ -11,9 +11,9 @@
     
 </script>
 
-<div class="relative flex justify-center items-center gap-1 group">
+<div class="relative flex justify-center items-center gap-1 text-2xl group">
     <Icon src={icon}/>
-    <span class="text-2xl font-semibold">{F(value)}</span>
+    <span class="font-semibold">{F(value)}</span>
     {#if text.length > 0}
         <Tooltip>{text}</Tooltip>
     {/if}
