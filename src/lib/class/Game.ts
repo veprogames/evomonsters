@@ -6,7 +6,7 @@ import ContentMeal from "./content/ContentMeal";
 import Monster from "./Monster";
 
 export default class Game implements JSONifier{
-    readonly savedProps = ["monster", "achievements", "calories", "meal"];
+    readonly savedProps = ["monster", "achievements", "calories", "meal", "genetic"];
     readonly extraProps = ["version"];
 
     /** The Player */
