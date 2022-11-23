@@ -3,6 +3,7 @@
     import { isMobile } from "./ismobile";
     import GameTicker from "./lib/class/GameTicker";
     import GameBackground from "./lib/components/GameBackground.svelte";
+    import HeaderCurrency from "./lib/components/HeaderCurrency.svelte";
     import Icon from "./lib/components/Icon.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
@@ -35,18 +36,15 @@
 
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1 class="hidden md:block">Evomonsters</h1>
-    <div class="relative flex justify-center items-center gap-1 group">
-        <Icon src="/images/resources/calories.png"/>
-        <span class="text-2xl font-semibold">{F($game.calories.amount)}</span>
-        <Tooltip>Calories</Tooltip>
-    </div>
+
+    <HeaderCurrency icon="/images/resources/calories.png" 
+        value={$game.calories.amount} 
+        text="Calories"/>
 
     {#if $game.genetic.total.gte(1)}
-        <div class="relative flex justify-center items-center gap-1 group">
-            <Icon src="/images/resources/calories.png"/>
-            <span class="text-2xl font-semibold">{F($game.genetic.amount)}</span>
-            <Tooltip>Genetic Points (GP)</Tooltip>
-        </div>
+        <HeaderCurrency icon="/images/resources/calories.png" 
+            value={$game.genetic.amount} 
+            text="Genetic Points (GP)"/>
     {/if}
 </header>
 <main class="p-4 pb-16">
