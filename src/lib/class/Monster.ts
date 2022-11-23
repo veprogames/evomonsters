@@ -28,7 +28,8 @@ export default class Monster implements JSONifier{
         const g = get(game);
         return new Decimal(5).mul(this.sizeCm)
             .mul(this.evolutionDamageBoost)
-            .mul(g.calories.upgrades.strongTeeth.effect);
+            .mul(g.calories.upgrades.strongTeeth.effect)
+            .mul(g.genetic.damageBoost);
     }
 
     getBiteDamage(meal: Meal){

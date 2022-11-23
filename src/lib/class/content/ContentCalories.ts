@@ -53,4 +53,11 @@ export default class ContentCalories extends GameResource implements JSONifier{
             }
         }
     }
+
+    prestige(){
+        super.prestige();
+        for(const k of Object.keys(this.upgrades)){
+            this.upgrades[k].level = 0;
+        }
+    }
 }

@@ -46,6 +46,7 @@ export default class GameResource implements JSONifier{
     }
 
     prestige(){
+        this._amount = new Decimal(0);
         this._highestThisRun = new Decimal(0);
         this._totalThisRun = new Decimal(0);
     }
