@@ -3,12 +3,14 @@
     import { isMobile } from "./ismobile";
     import GameTicker from "./lib/class/GameTicker";
     import GameBackground from "./lib/components/GameBackground.svelte";
+    import HeaderCurrency from "./lib/components/HeaderCurrency.svelte";
     import Icon from "./lib/components/Icon.svelte";
     import MealCard from "./lib/components/MealCard.svelte";
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
     import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
     import TabEvolution from "./lib/components/tabs/TabEvolution.svelte";
+    import TabGenetic from "./lib/components/tabs/TabGenetic.svelte";
     import Tooltip from "./lib/components/Tooltip.svelte";
     import { F } from "./lib/format";
     import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
@@ -34,11 +36,16 @@
 
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1 class="hidden md:block">Evomonsters</h1>
-    <div class="relative flex justify-center items-center gap-1 group">
-        <Icon src="/images/resources/calories.png"/>
-        <span class="text-2xl font-semibold">{F($game.calories.amount)}</span>
-        <Tooltip>Calories</Tooltip>
-    </div>
+
+    <HeaderCurrency icon="/images/resources/calories.png" 
+        value={$game.calories.amount} 
+        text="Calories"/>
+
+    {#if $game.genetic.total.gte(1)}
+        <HeaderCurrency icon="/images/resources/genetic.png" 
+            value={$game.genetic.amount} 
+            text="Genetic Points (GP)"/>
+    {/if}
 </header>
 <main class="p-4 pb-16">
     <GameBackground/>
@@ -53,6 +60,9 @@
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
             <button on:click={() => $tabs.caloriesTab = TabEvolution}>Evolution</button>
+            {#if $game.genetic.gain.gte(1) || $game.genetic.total.gte(1)}
+                <button on:click={() => $tabs.caloriesTab = TabGenetic}>Mutation</button>
+            {/if}
             <button on:click={() => saveGame($game)}>Save Game</button>
         </div>
         <div class="flex justify-center">

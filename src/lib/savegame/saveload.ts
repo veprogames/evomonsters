@@ -29,7 +29,9 @@ export function revive(data: object, applyTo: object){
         else{
             for(const k of applyTo.savedProps){
                 if(implementsJSONifier(applyTo[k])){
-                    revive(data[k], applyTo[k]);
+                    if(data[k]){
+                        revive(data[k], applyTo[k]);
+                    }
                 }
                 else if(applyTo[k]){
                     applyTo[k] = data[k];
