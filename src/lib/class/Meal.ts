@@ -286,5 +286,54 @@ export const meals = {
         hardness: 10e6,
         calories: 250e9,
         icon: "small_asteroid.png"
+    },
+    27: {
+        name: "Space Habitat",
+        hp: 140e6,
+        hardness: 18e6,
+        calories: 666e9,
+        icon: "small_asteroid.png"
+    },
+    28: {
+        name: "Large Moon Base",
+        hp: 200e6,
+        hardness: 25e6,
+        calories: 1e12,
+        icon: "small_asteroid.png"
+    },
+    29: {
+        name: "Mount Everest",
+        hp: 350e6,
+        hardness: 50e6,
+        calories: 1.9e12,
+        icon: "small_asteroid.png"
+    },
+    30: {
+        name: "Medium Asteroid",
+        hp: 800e6,
+        hardness: 140e6,
+        calories: 5e12,
+        icon: "small_asteroid.png"
+    },
+    31: {
+        name: "Super-Mountain",
+        hp: 1.5e9,
+        hardness: 275e6,
+        calories: 12e12,
+        icon: "small_asteroid.png"
+    },
+    32: {
+        name: "Comet",
+        hp: 3e9,
+        hardness: 600e6,
+        calories: 30e12,
+        icon: "small_asteroid.png"
+    },
+    33: {
+        name: "Asteroid Family",
+        hp: 6.6e9,
+        hardness: 1.3e9,
+        calories: 80e12,
+        icon: "small_asteroid.png"
     }
 } as {[key: number]: MealDefinition};

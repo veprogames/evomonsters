@@ -16,7 +16,12 @@ export default class Monster implements JSONifier{
 
     /** size in Meters */
     get size(){
-        return this.mass.pow(0.5).mul(0.01);
+        let size = this.mass.pow(0.5).mul(0.01);
+        const earth = 12_756_000;
+
+        if(size.lt(earth)) return size;
+        size = Decimal.max(size, earth).mul(size.div(earth).pow(0.7)); //softcap size from 1 earth on
+        return size;
     }
 
     private get sizeCm(){
@@ -90,6 +95,11 @@ export const evolutions: MonsterEvolution[] = [
     {
         score: 7500,
         name: "Adult Monster",
+        icon: "young.png"
+    },
+    {
+        score: 12500,
+        name: "Senior Monster",
         icon: "young.png"
     }
 ];
