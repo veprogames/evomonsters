@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import type JSONifier from "../savegame/JSONifier";
 
 export default class GameResource implements JSONifier{

@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import type JSONifier from "../../savegame/JSONifier";
 import type Achievement from "../achievements/Achievement";
 import CaloriesAchievement from "../achievements/CaloriesAchievement";

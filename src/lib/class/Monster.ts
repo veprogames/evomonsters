@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import { get } from "svelte/store";
 import type JSONifier from "../savegame/JSONifier";
 import { game } from "../stores";

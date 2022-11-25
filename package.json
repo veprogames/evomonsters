@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "@antimatter-dimensions/notations": "^3.0.4",
-    "break_infinity.js": "^2.0.0"
+    "break_eternity.js": "^1.3.1"
   }
 }

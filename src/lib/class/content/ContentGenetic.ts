@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import { get } from "svelte/store";
 import { game } from "../../stores";
 import GameResource from "../GameResource";
