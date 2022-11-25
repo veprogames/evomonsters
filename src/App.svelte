@@ -9,6 +9,7 @@
     import MonsterCard from "./lib/components/MonsterCard.svelte";
     import TabAchievements from "./lib/components/tabs/TabAchievements.svelte";
     import TabCaloriesUpgrades from "./lib/components/tabs/TabCaloriesUpgrades.svelte";
+    import TabCredits from "./lib/components/tabs/TabCredits.svelte";
     import TabEvolution from "./lib/components/tabs/TabEvolution.svelte";
     import TabGenetic from "./lib/components/tabs/TabGenetic.svelte";
     import Tooltip from "./lib/components/Tooltip.svelte";
@@ -60,6 +61,7 @@
             <button on:click={() => $tabs.caloriesTab = TabCaloriesUpgrades}>Upgrades</button>
             <button on:click={() => $tabs.caloriesTab = TabAchievements}>Achievements</button>
             <button on:click={() => $tabs.caloriesTab = TabEvolution}>Evolution</button>
+            <button on:click={() => $tabs.caloriesTab = TabCredits}>Credits</button>
             {#if $game.genetic.gain.gte(1) || $game.genetic.total.gte(1)}
                 <button on:click={() => $tabs.caloriesTab = TabGenetic}>Mutation</button>
             {/if}
