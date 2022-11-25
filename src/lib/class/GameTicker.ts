@@ -1,5 +1,4 @@
 import { get } from "svelte/store";
-import { saveGame } from "../savegame/saveload";
 import { game } from "../stores";
 import type CaloriesUpgrade from "./upgrades/CaloriesUpgrade";
 
@@ -11,7 +10,7 @@ export default class GameTicker{
     constructor(){
         this.telekinsesisUpgrade = get(game).calories.upgrades.telekinesis;
 
-        setInterval(() => saveGame(get(game)), 60000);
+        //setInterval(() => saveGame(get(game)), 60000);
     }
 
     private get telekinsesisInterval(){
