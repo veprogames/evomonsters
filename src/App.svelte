@@ -27,6 +27,7 @@
 
     onMount(() => {
         ticker.start();
+        setInterval(() => saveGame($game), 60000);
     });
     onDestroy(() => ticker.stop());
 </script>

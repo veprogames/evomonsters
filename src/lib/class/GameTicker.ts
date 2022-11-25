@@ -5,12 +5,10 @@ import type CaloriesUpgrade from "./upgrades/CaloriesUpgrade";
 /** Handles Game Loop */
 export default class GameTicker{
     private telekinsesisUpgrade: CaloriesUpgrade;
-    private timeout;
+    private timeout: NodeJS.Timeout;
 
     constructor(){
         this.telekinsesisUpgrade = get(game).calories.upgrades.telekinesis;
-
-        //setInterval(() => saveGame(get(game)), 60000);
     }
 
     private get telekinsesisInterval(){
