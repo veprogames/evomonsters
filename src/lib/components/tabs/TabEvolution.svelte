@@ -7,7 +7,7 @@
 </script>
 <div class="card-transparent flex flex-col items-center gap-2 max-w-sm">
     <p class="stat orange text-xl">Evoscore</p>
-    <p class="text-2xl font-semibold">{$game.monster.evoMonsterScore.toLocaleString("en-US")}</p>
+    <p class="text-2xl font-semibold">{$game.monster.evoMonsterScore.toNumber().toLocaleString("en-US")}</p>
     <p class="stat green text-xl">Damage Boost</p>
     <p class="text-2xl font-semibold">x{F($game.monster.evolutionDamageBoost, 2, 2)}</p>
     <p>

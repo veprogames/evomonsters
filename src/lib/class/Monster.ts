@@ -47,12 +47,14 @@ export default class Monster implements JSONifier{
         const achievements = 1 + 0.25 * g.achievements.countUnlocked;
         const meal = 1 + 0.05 * g.meal.highest;
         const highestCalories = Decimal.max(g.calories.highest, 1);
-        const gp = 1 + g.genetic.total.add(1).log10() * 0.2;
-        return Math.floor(100 * highestCalories.log10() * achievements * meal * gp);
+        const gp = (g.genetic.total.add(1).log10().mul(0.2)).add(1);
+        return Decimal.floor(highestCalories.log10()
+            .mul(gp)
+            .mul(100 * achievements * meal));
     }
 
     private get evolutionIndex(){
-        const index = evolutions.findIndex(evo => evo.score > this.evoMonsterScore);
+        const index = evolutions.findIndex(evo => new Decimal(evo.score).gt(this.evoMonsterScore));
         return index === -1 ? evolutions.length - 1 : index - 1;
     }
 

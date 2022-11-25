@@ -13,10 +13,10 @@ export default class ContentGenetic extends GameResource{
     get gain(){
         const calories = get(game).calories.totalThisRun;
         const log = calories.log10();
-        if(log < 12) return new Decimal(0);
+        if(log.lt(12)) return new Decimal(0);
         //first GP at 1e12
-        return new Decimal(Math.max(0, Math.floor(log) - 9) / 3)
-            .mul(Decimal.pow(2, Math.max(0, log - 18) / 6))
+        return new Decimal(Decimal.max(0, Decimal.floor(log).sub(9)).div(3))
+            .mul(Decimal.pow(2, Decimal.max(0, log.sub(18)).div(6)))
             .floor();
     }
 
