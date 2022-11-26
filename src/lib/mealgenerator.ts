@@ -8,8 +8,8 @@ export function generateMealDefinition(index: number): MealDefinition{
     return {
         name: `${meal.name} Mk. ${delta + 1}`,
         hp: new Decimal(meal.hp).mul(Decimal.pow(1.7, delta)),
-        hardness: new Decimal(meal.hardness).mul(Decimal.pow(1.7, delta)),
-        calories: new Decimal(meal.calories).mul(Decimal.pow(1.7 ** 1.25, delta)),
+        hardness: new Decimal(meal.hardness).mul(Decimal.pow(1.7 ** 1.1, delta)),
+        calories: new Decimal(meal.calories).mul(Decimal.pow(1.7 ** 1.3, delta)),
         icon: meal.icon
     };
 }

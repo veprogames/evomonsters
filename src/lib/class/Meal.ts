@@ -368,22 +368,22 @@ export const meals = {
     38: {
         name: "Space Monolith",
         hp: 1.4e12,
-        hardness: 600e9,
+        hardness: 500e9,
         calories: 150e15,
         icon: "monolith.png"
     },
     39: {
         name: "Small Planet",
         hp: 3e12,
-        hardness: 1.3e12,
-        calories: 400e15,
+        hardness: 1.1e12,
+        calories: 450e15,
         icon: "small_planet.png"
     },
     40: {
         name: "Megastructure",
         hp: 5.5e12,
-        hardness: 2e12,
-        calories: 900e15,
+        hardness: 1.6e12,
+        calories: 1e18,
         icon: "megastructure.png"
     }
 } as {[key: number]: MealDefinition};

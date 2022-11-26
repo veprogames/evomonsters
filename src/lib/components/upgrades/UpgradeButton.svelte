@@ -28,8 +28,8 @@
         on:dblclick={buyMobile}
         class="inline-flex justify-center items-start relative w-20 h-20"
         class:error={!upgrade.canAfford}>
-        <img src={icon} alt="Icon" class="w-12 h-12 rounded-md"/>
-        <span class="absolute -translate-x-1/2 left-1/2 bottom-0">
+        <img src={icon} alt="Icon" class="w-12 h-12 rounded-md" draggable="false"/>
+        <span class="absolute -translate-x-1/2 left-1/2 bottom-0 font-semibold">
             {#if upgrade.isMaxed}
                 Max
             {:else if upgrade.maxLevel < Infinity}
