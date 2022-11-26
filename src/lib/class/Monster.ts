@@ -17,10 +17,10 @@ export default class Monster implements JSONifier{
     /** size in Meters */
     get size(){
         let size = this.mass.pow(0.5).mul(0.01);
-        const earth = 12_756_000;
+        const softcap = 1_000_000;
 
-        if(size.lt(earth)) return size;
-        size = Decimal.max(size, earth).mul(size.div(earth).pow(0.7)); //softcap size from 1 earth on
+        if(size.lt(softcap)) return size;
+        size = Decimal.min(size, softcap).mul(size.div(softcap).pow(0.7)); //softcap size from 1,000 km on
         return size;
     }
 
