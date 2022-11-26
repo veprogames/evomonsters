@@ -97,11 +97,11 @@ export const evolutions: MonsterEvolution[] = [
     {
         score: 7500,
         name: "Adult Monster",
-        icon: "young.png"
+        icon: "adult.png"
     },
     {
         score: 12500,
         name: "Senior Monster",
-        icon: "young.png"
+        icon: "senior.png"
     }
 ];
