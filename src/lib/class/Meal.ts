@@ -344,10 +344,38 @@ export const meals = {
         icon: "tiny_planet.png"
     },
     35: {
+        name: "Moon",
+        hp: 60e9,
+        hardness: 15e9,
+        calories: 3e15,
+        icon: "moon.png"
+    },
+    36: {
+        name: "Floating Civilization",
+        hp: 200e9,
+        hardness: 60e9,
+        calories: 13e15,
+        icon: "world_bubble.png"
+    },
+    37: {
+        name: "Cheese Planet",
+        hp: 500e9,
+        hardness: 200e9,
+        calories: 40e15,
+        icon: "cheese_planet.png"
+    },
+    38: {
+        name: "Space Monolith",
+        hp: 1.4e12,
+        hardness: 600e9,
+        calories: 150e15,
+        icon: "monolith.png"
+    },
+    39: {
         name: "The Great Mysterium",
-        hp: 1e15,
-        hardness: 1e15,
-        calories: 1e21,
+        hp: 1e18,
+        hardness: 1e18,
+        calories: 1e24,
         icon: "endofcontent.png"
     }
 } as {[key: number]: MealDefinition};
