@@ -12,6 +12,7 @@
     import TabCredits from "./lib/components/tabs/TabCredits.svelte";
     import TabEvolution from "./lib/components/tabs/TabEvolution.svelte";
     import TabGenetic from "./lib/components/tabs/TabGenetic.svelte";
+    import TabSettings from "./lib/components/tabs/TabSettings.svelte";
     import Tooltip from "./lib/components/Tooltip.svelte";
     import { F } from "./lib/format";
     import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
@@ -66,7 +67,7 @@
             {#if $game.genetic.gain.gte(1) || $game.genetic.total.gte(1)}
                 <button on:click={() => $tabs.caloriesTab = TabGenetic}>Mutation</button>
             {/if}
-            <button on:click={() => saveGame($game)}>Save Game</button>
+            <button on:click={() => $tabs.caloriesTab = TabSettings}>Settings</button>
         </div>
         <div class="flex justify-center">
             <svelte:component this={$tabs.caloriesTab}/>
