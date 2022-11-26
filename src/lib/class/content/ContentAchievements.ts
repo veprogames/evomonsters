@@ -28,7 +28,9 @@ export default class ContentAchievements implements JSONifier{
         foodOverflow: new CaloriesAchievement(new Decimal(1e9), "Food overflow!"),
         toSpace: new MealAchievement(19, "To Space!"),
         assimilation: new CaloriesAchievement(new Decimal(1e12), "The Great Assimilation"),
-        village: new MealAchievement(22, "Community Meal")
+        village: new MealAchievement(22, "Community Meal"),
+        neowise: new MealAchievement(32, "NEOWISE"),
+        endHunger: new CaloriesAchievement(new Decimal(1e18), "End World Hunger")
     }
 
     get countUnlocked(){
