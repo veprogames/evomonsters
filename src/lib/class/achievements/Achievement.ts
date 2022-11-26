@@ -24,9 +24,9 @@ export default class Achievement implements JSONifier{
     }
 
     private check(){
+        // TODO for some reason this.unlocked is still false after loading
         if(!this.unlocked && this.condition(get(game))){
             this.unlock();
-            console.log("Unlocked: ", this);
         }
     }
 

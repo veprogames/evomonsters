@@ -7,14 +7,16 @@
     export let icon: string = "/images/placeholder.png";
     export let currencyIcon: string = "/images/placeholder.png";
 
+    $: mobile = isMobile();
+
     function buy(){
-        if(!isMobile()){
+        if(!mobile){
             upgrade.buy();
         }
     }
 
     function buyMobile(){
-        if(isMobile()){
+        if(mobile){
             upgrade.buy();
         }
     }
@@ -52,5 +54,8 @@
                 <img src={currencyIcon} alt="Currency Icon" class="h-6 w-auto inline"/> {upgrade.priceDisplay}
             </p>
         </slot>
+        {#if mobile}
+            <span class="text-blue-400">Double Click to buy</span>
+        {/if}
     </Tooltip>
 </div>

@@ -9,7 +9,7 @@
 
 <div class="card-transparent flex flex-col items-center gap-1 h-fit">
     <button disabled={gain.eq(0)} on:dblclick={() => $game.genetic.mutate()}>
-        Mutate and gain<br/>
+        <span class="text-blue-400 font-semibold">Double Click</span> to Mutate and gain<br/>
         <Icon src="/images/resources/genetic.png"/> <span class="text-green-400 font-semibold">{F(gain)}</span><br/>
         (Genetic Points)<br/>
         <span class="text-green-400 font-semibold">+100%</span> Damage each

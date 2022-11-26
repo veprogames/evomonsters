@@ -73,7 +73,6 @@ export function getSaveCode(game: Game){
 export function saveGame(game: Game){
     const code = getSaveCode(game);
     localStorage.setItem("veprogames.evomonsters.game.default", code);
-    console.log("Saved to localStorage:", code);
     return code;
 }
 

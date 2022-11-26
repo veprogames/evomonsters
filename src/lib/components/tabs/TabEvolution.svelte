@@ -15,7 +15,7 @@
         You can compare this score to other players.
     </p>
     {#if nextEvolution}
-        <p>Your next Evolution will be at {nextEvolution.score} EvoScore.</p>
+        <p>Your next Evolution will be at  <span class="font-semibold text-green-400">{nextEvolution.score.toLocaleString("en-US")}</span> EvoScore.</p>
     {:else}
         <p class="font-semibold text-green-400">You have reached the final Evolution Stage!</p>
     {/if}
