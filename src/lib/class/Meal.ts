@@ -1,5 +1,6 @@
 import Decimal from "break_eternity.js";
 import { get } from "svelte/store";
+import { generateMealDefinition } from "../mealgenerator";
 import { game } from "../stores";
 import Achievement from "./achievements/Achievement";
 import type Monster from "./Monster";
@@ -44,9 +45,9 @@ export default class Meal{
 
     /** get a Meal from the meals store */
     static get(index: number){
-        const definition = meals[index];
+        let definition = meals[index];
         if(!definition){
-            return Meal.UNKNOWN;
+            definition = generateMealDefinition(index);
         }
         return Meal.from(definition);
     }
@@ -384,12 +385,5 @@ export const meals = {
         hardness: 2e12,
         calories: 900e15,
         icon: "megastructure.png"
-    },
-    41: {
-        name: "The Great Mysterium",
-        hp: 1e18,
-        hardness: 1e18,
-        calories: 1e24,
-        icon: "endofcontent.png"
     }
 } as {[key: number]: MealDefinition};
