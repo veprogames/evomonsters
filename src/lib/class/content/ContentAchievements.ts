@@ -2,6 +2,7 @@ import Decimal from "break_eternity.js";
 import type JSONifier from "../../savegame/JSONifier";
 import type Achievement from "../achievements/Achievement";
 import CaloriesAchievement from "../achievements/CaloriesAchievement";
+import GPAchievement from "../achievements/GPAchievement";
 import MealAchievement from "../achievements/MealAchievement";
 
 interface AchievementMap{
@@ -30,7 +31,11 @@ export default class ContentAchievements implements JSONifier{
         assimilation: new CaloriesAchievement(new Decimal(1e12), "The Great Assimilation"),
         village: new MealAchievement(22, "Community Meal"),
         neowise: new MealAchievement(32, "NEOWISE"),
-        endHunger: new CaloriesAchievement(new Decimal(1e18), "End World Hunger")
+        endHunger: new CaloriesAchievement(new Decimal(1e18), "End World Hunger"),
+
+        mutated: new GPAchievement(new Decimal(1), "Mutated"),
+        geneticSharpness: new GPAchievement(new Decimal(10), "Genetic Sharpness"),
+        geneticFitness: new GPAchievement(new Decimal(100), "Genetic Fitness")
     }
 
     get countUnlocked(){

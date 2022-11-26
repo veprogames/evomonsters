@@ -11,7 +11,7 @@
 </script>
 
 <div class="card-transparent flex flex-col items-center gap-1">
-    <img src={monsterIcon} alt="Monster" class="w-44 h-44"/>
+    <img src={monsterIcon} alt="Monster" class="w-44 h-44 xl:w-52 xl:h-52"/>
     <p class="font-semibold">{evolution.name}</p>
     <p><span class="stat blue">Size</span> {FSize(monster.size, 2, 2)}</p>
     <p><span class="stat green">Bite Dmg</span> {F(biteDamage)}</p>

@@ -372,6 +372,20 @@ export const meals = {
         icon: "monolith.png"
     },
     39: {
+        name: "Small Planet",
+        hp: 3e12,
+        hardness: 1.3e12,
+        calories: 400e15,
+        icon: "small_planet.png"
+    },
+    40: {
+        name: "Megastructure",
+        hp: 5.5e12,
+        hardness: 2e12,
+        calories: 900e15,
+        icon: "megastructure.png"
+    },
+    41: {
         name: "The Great Mysterium",
         hp: 1e18,
         hardness: 1e18,

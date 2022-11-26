@@ -22,6 +22,11 @@
         <AchievementComp achievement={achievements.assimilation} icon="/images/achievements/food.png"></AchievementComp>
         <AchievementComp achievement={achievements.endHunger} icon="/images/achievements/food.png"></AchievementComp>
     </div>
+    <div class="achievement-row">
+        <AchievementComp achievement={achievements.mutated} icon="/images/resources/genetic.png"></AchievementComp>
+        <AchievementComp achievement={achievements.geneticSharpness} icon="/images/resources/genetic.png"></AchievementComp>
+        <AchievementComp achievement={achievements.geneticFitness} icon="/images/resources/genetic.png"></AchievementComp>
+    </div>
 </div>
 
 <style lang="postcss">

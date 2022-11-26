@@ -1,6 +1,7 @@
 import Decimal from "break_eternity.js";
 import { get } from "svelte/store";
 import { game } from "../../stores";
+import Achievement from "../achievements/Achievement";
 import GameResource from "../GameResource";
 import Meal from "../Meal";
 
@@ -28,6 +29,7 @@ export default class ContentGenetic extends GameResource{
             g.meal.index = 0;
             g.meal.current = Meal.get(0);
             g.monster.mass = new Decimal(1);
+            Achievement.checkAll();
             return g;
         });
     }
