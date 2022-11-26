@@ -1,4 +1,4 @@
-import Decimal, { type DecimalSource } from "break_infinity.js";
+import Decimal, { type DecimalSource } from "break_eternity.js";
 import * as ADNotations from "@antimatter-dimensions/notations";
 
 const notation = new ADNotations.StandardNotation();
@@ -13,8 +13,8 @@ const distanceUnits: Array<[number, string]> = [
 ]
 
 export function F(n: DecimalSource, places: number = 2, places1000: number = 0): string{
-    if(typeof n === "string" || typeof n === "number"){
-        n = new Decimal(n);
+    if(n instanceof Decimal || typeof n === "number"){
+        n = n.toString();
     }
     return notation.format(n, places, places1000);
 }

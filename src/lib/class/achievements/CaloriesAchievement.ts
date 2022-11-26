@@ -1,4 +1,4 @@
-import type Decimal from "break_infinity.js";
+import type Decimal from "break_eternity.js";
 import { F } from "../../format";
 import Achievement from "./Achievement";
 

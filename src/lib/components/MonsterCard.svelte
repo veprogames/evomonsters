@@ -15,5 +15,5 @@
     <p class="font-semibold">{evolution.name}</p>
     <p><span class="stat blue">Size</span> {FSize(monster.size, 2, 2)}</p>
     <p><span class="stat green">Bite Dmg</span> {F(biteDamage)}</p>
-    <p><span class="stat orange">Evoscore</span> {monster.evoMonsterScore.toLocaleString("en-US")}</p>
+    <p><span class="stat orange">Evoscore</span> {monster.evoMonsterScore.toNumber().toLocaleString("en-US")}</p>
 </div>

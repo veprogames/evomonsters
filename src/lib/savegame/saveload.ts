@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import Game from "../class/Game";
 import type JSONifier from "./JSONifier";
 
