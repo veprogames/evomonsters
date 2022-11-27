@@ -25,6 +25,6 @@ export default class Game implements JSONifier{
     }
 
     get versionPretty(){
-        return "1.0";
+        return "0.1";
     }
 }

@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { isMobile } from "../../../ismobile";
     import { getSaveCode, loadFromStorage, loadGame, saveGame } from "../../savegame/saveload";
     import { game } from "../../stores";
 
@@ -29,4 +30,5 @@
     <textarea class="w-full h-32" placeholder="Paste Code to import here" bind:value={importCode}></textarea>
     <button on:click={importGame}>Import from Textbox</button>
     <a bind:this={a} class="hidden" download="evomonsters.save.txt" {href}>Download</a>
+    <p>Version {$game.versionPretty} ◦ Platform: {isMobile() ? "Mobile" : "Desktop"}</p>
 </div>

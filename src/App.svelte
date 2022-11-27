@@ -73,6 +73,3 @@
         </div>
     </div>
 </main>
-<footer class="bg-black bg-opacity-40 text-slate-50 p-4 fixed bottom-0 w-full text-center">
-    Version {$game.versionPretty} ◦ Platform: {isMobile() ? "Mobile" : "Desktop"}
-</footer>
