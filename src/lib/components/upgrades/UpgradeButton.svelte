@@ -4,8 +4,8 @@
     import Tooltip from "../Tooltip.svelte";
 
     export let upgrade: Upgrade;
-    export let icon: string = "/images/placeholder.png";
-    export let currencyIcon: string = "/images/placeholder.png";
+    export let icon: string = "./images/placeholder.png";
+    export let currencyIcon: string = "./images/placeholder.png";
 
     $: mobile = isMobile();
 
