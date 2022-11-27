@@ -16,22 +16,35 @@ export default class Monster implements JSONifier{
 
     /** size in Meters */
     get size(){
-        let size = this.mass.pow(0.5).mul(0.01);
-        const softcap = 1_000_000;
-
-        if(size.lt(softcap)) return size;
-        size = Decimal.min(size, softcap).mul(size.div(softcap).pow(0.7)); //softcap size from 1,000 km on
-        return size;
+        return this.mass.pow(0.5).mul(0.01);
     }
 
     private get sizeCm(){
         return this.size.mul(100);
     }
 
+    /**
+     * Don't show the softcapped size in the UI, so the size growth of the monster won't slow down too much
+     * 
+     * This basically makes damage scale slower from a certain size on to make more room for boosts
+     */
+    private get softcappedSize(){
+        let size = this.size;
+        const softcap = 1_000_000;
+
+        if(size.lt(softcap)) return size;
+        size = Decimal.min(size, softcap).mul(size.div(softcap).pow(0.75)); //softcap size from 1,000 km on
+        return size;
+    }
+
+    private get softcappedSizeCm(){
+        return this.softcappedSize.mul(100);
+    }
+
     /** final bite damage without hardness */
     get damage(){
         const g = get(game);
-        return new Decimal(5).mul(this.sizeCm)
+        return new Decimal(5).mul(this.softcappedSizeCm)
             .mul(this.evolutionDamageBoost)
             .mul(g.calories.upgrades.strongTeeth.effect)
             .mul(g.genetic.damageBoost);
