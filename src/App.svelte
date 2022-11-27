@@ -39,12 +39,12 @@
 <header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1 class="hidden md:block">Evomonsters</h1>
 
-    <HeaderCurrency icon="/images/resources/calories.png" 
+    <HeaderCurrency icon="./images/resources/calories.png" 
         value={$game.calories.amount} 
         text="Calories"/>
 
     {#if $game.genetic.total.gte(1)}
-        <HeaderCurrency icon="/images/resources/genetic.png" 
+        <HeaderCurrency icon="./images/resources/genetic.png" 
             value={$game.genetic.amount} 
             text="Genetic Points (GP)"/>
     {/if}
