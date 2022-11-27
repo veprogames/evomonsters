@@ -32,7 +32,7 @@
     let src: string;
     $: {
         const bg = bgs.find(bg => $game.meal.index >= bg.index);
-        src = `/images/bg/${bg.image}`;
+        src = `./images/bg/${bg.image}`;
     }
 </script>
 

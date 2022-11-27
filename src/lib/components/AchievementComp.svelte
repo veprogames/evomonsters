@@ -3,7 +3,7 @@
     import Tooltip from "./Tooltip.svelte";
 
     export let achievement: Achievement;
-    export let icon = "/images/placeholder.png";
+    export let icon = "./images/placeholder.png";
 </script>
 
 <div class="relative inline-flex justify-center items-center

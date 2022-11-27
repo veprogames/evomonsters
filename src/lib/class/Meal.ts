@@ -74,7 +74,7 @@ export default class Meal{
     }
 
     get iconPath(){
-        return `/images/meals/${this._icon}`;
+        return `./images/meals/${this._icon}`;
     }
 
     damage(amount: Decimal){

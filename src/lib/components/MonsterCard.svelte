@@ -7,7 +7,7 @@
 
     $: biteDamage = monster.getBiteDamage($game.meal.current);
     $: evolution = monster.evolution;
-    $: monsterIcon = `/images/monster/${evolution.icon}`;
+    $: monsterIcon = `./images/monster/${evolution.icon}`;
 </script>
 
 <div class="card-transparent flex flex-col items-center gap-1">
