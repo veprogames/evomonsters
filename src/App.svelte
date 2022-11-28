@@ -36,7 +36,7 @@
     <title>{F($game.calories.amount)} | Evomonsters</title>
 </svelte:head>
 
-<header class="bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
+<header class="sticky top-0 z-20 bg-black bg-opacity-70 text-slate-50 shadow-md p-4 flex justify-evenly items-center">
     <h1 class="hidden md:block">Evomonsters</h1>
 
     <HeaderCurrency icon="./images/resources/calories.png" 
