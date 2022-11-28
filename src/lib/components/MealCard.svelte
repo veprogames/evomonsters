@@ -20,16 +20,27 @@
     }
 </script>
 
-<div class="card flex flex-col items-center w-fit gap-1">
-    <div class="flex justify-between items-center gap-2">
+<div class="card-transparent flex flex-col items-center w-fit gap-1">
+    <p class="text-2xl">
+        <span class="font-black text-green-400">#</span>
+        <span class="font-semibold">{mealContent.index + 1}</span>
+    </p>
+    <div class="flex justify-between items-center gap-4">
         <button class:invisible={mealContent.currentlyAtFirst} on:click={previous}>&lt;</button>
-        <img src="/images/placeholder.png" alt={meal.name} 
-            class="w-24 h-24 lg:w-36 lg:h-36 hover:brightness-90 active:brightness-75 transition"
+        <img src={meal.iconPath} alt={meal.name} 
+            class="w-24 h-24 lg:w-36 lg:h-36 xl:w-44 xl:h-44 rounded-full hover:brightness-90 active:brightness-75 transition"
+            draggable="false"
             on:click={damage} on:keydown={damage}/>
         <button class:invisible={mealContent.currentlyAtHighest} on:click={next}>&gt;</button>
     </div>
     <p class="font-semibold">{meal.name}</p>
-    <p>HP {F(meal.currentHp)}</p>
-    <p>Hardness {F(meal.hardness)}</p>
-    <p>Calories {F(meal.calories)}</p>
+    <p><span class="stat orange">HP</span> {F(meal.currentHp)}</p>
+    <p><span class="stat blue">Hardness</span> {F(meal.hardness)}</p>
+    <p><span class="stat green">Calories</span> {F(meal.calories)}</p>
 </div>
+
+<style lang="postcss">
+    button{
+        @apply text-4xl px-4;
+    }
+</style>

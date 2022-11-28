@@ -1,4 +1,4 @@
-import Decimal, { type DecimalSource } from "break_infinity.js";
+import Decimal, { type DecimalSource } from "break_eternity.js";
 import { get } from "svelte/store";
 import { F } from "../../format";
 import type JSONifier from "../../savegame/JSONifier";
@@ -62,10 +62,10 @@ export default class Upgrade implements JSONifier{
         this.description = description ?? "";
 
         this._effectDisplayDefinition = {
-            prefix: effectDisplay?.prefix ?? "",
+            prefix: effectDisplay?.prefix ?? "x",
             suffix: effectDisplay?.suffix ?? "",
             places: effectDisplay?.places ?? 2,
-            places1000: effectDisplay?.places1000 ?? 0
+            places1000: effectDisplay?.places1000 ?? 2
         };
 
         this.recalculate();

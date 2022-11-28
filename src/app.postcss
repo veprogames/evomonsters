@@ -9,7 +9,11 @@ body{
 }
 
 button{
-    @apply bg-slate-300 dark:bg-slate-600 rounded-md p-2 transition;
+    @apply bg-slate-300 dark:bg-slate-700 border-b-4 border-b-slate-500 dark:border-b-slate-900 rounded-md p-2 transition;
+}
+
+button.error{
+    @apply bg-red-300 dark:bg-red-700 border-b-red-500 dark:border-b-red-900;
 }
 
 button:disabled{
@@ -19,6 +23,10 @@ button:disabled{
 button:not(:disabled){
     @apply hover:brightness-90 active:brightness-75 
         dark:hover:brightness-110 dark:active:brightness-125;
+}
+
+textarea {
+    @apply bg-slate-200 dark:bg-slate-700 rounded-md p-1 outline-none;
 }
 
 h1 {
@@ -33,12 +41,23 @@ h3 {
     @apply font-semibold text-lg;
 }
 
+a {
+    @apply text-green-400 underline;
+}
+
+a:visited {
+    @apply text-green-500 underline;
+}
+
 .card{
-    @apply bg-slate-400 dark:bg-slate-700 rounded-md p-4;
-    min-width: 240px;
+    @apply bg-slate-400 dark:bg-slate-700 bg-opacity-75 rounded-md p-4;
 }
 
 .card-transparent{
+    @apply bg-black bg-opacity-50 text-slate-50 rounded-md p-4;
+}
+
+.card-less-transparent{
     @apply bg-black bg-opacity-75 text-slate-50 rounded-md p-4;
 }
 
@@ -46,4 +65,20 @@ h3 {
     @apply scale-0 group-hover:scale-100 transition-transform origin-top-left
         absolute left-full top-0 w-40
         text-left card-transparent;
+}
+
+.stat{
+    @apply text-sm font-bold uppercase;
+}
+
+.stat.blue{
+    @apply text-sm text-blue-400 font-bold uppercase;
+}
+
+.stat.green{
+    @apply text-sm text-green-400 font-bold uppercase;
+}
+
+.stat.orange{
+    @apply text-sm text-orange-400 font-bold uppercase;
 }

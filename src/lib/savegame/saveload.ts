@@ -1,4 +1,4 @@
-import Decimal from "break_infinity.js";
+import Decimal from "break_eternity.js";
 import Game from "../class/Game";
 import type JSONifier from "./JSONifier";
 
@@ -29,7 +29,9 @@ export function revive(data: object, applyTo: object){
         else{
             for(const k of applyTo.savedProps){
                 if(implementsJSONifier(applyTo[k])){
-                    revive(data[k], applyTo[k]);
+                    if(data[k]){
+                        revive(data[k], applyTo[k]);
+                    }
                 }
                 else if(applyTo[k]){
                     applyTo[k] = data[k];
@@ -71,7 +73,6 @@ export function getSaveCode(game: Game){
 export function saveGame(game: Game){
     const code = getSaveCode(game);
     localStorage.setItem("veprogames.evomonsters.game.default", code);
-    console.log("Saved to localStorage:", code);
     return code;
 }
 
