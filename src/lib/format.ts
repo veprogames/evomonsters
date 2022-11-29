@@ -25,8 +25,9 @@ export function FSize(distance: DecimalSource, places: number = 2, places1000: n
     }
     let i = 0;
     for(const [size, name] of distanceUnits){
-        const nextSize = distanceUnits[++i][0];
-        if(distance.gte(size) && distance.lt(nextSize)){
+        const nextUnit = distanceUnits[++i];
+        const nextSize = nextUnit ? nextUnit[0] : undefined;
+        if(distance.gte(size) && (distance.lt(nextSize) || !nextSize)){
             return `${F(distance.div(size), places, places1000)} ${name}`;
         }
     }
