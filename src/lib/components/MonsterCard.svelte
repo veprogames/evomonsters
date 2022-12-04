@@ -14,6 +14,7 @@
     <img src={monsterIcon} alt="Monster" class="w-44 h-44 xl:w-52 xl:h-52" draggable="false"/>
     <p class="font-semibold">{evolution.name}</p>
     <p><span class="stat blue">Size</span> {FSize(monster.size, 2, 2)}</p>
+    <p><span class="stat blue">Size2</span> {FSize(monster.size2, 2, 2)}</p>
     <p><span class="stat green">Bite Dmg</span> {F(biteDamage)}</p>
     <p><span class="stat orange">Evoscore</span> {monster.evoMonsterScore.toNumber().toLocaleString("en-US")}</p>
 </div>

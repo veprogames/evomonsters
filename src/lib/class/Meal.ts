@@ -192,84 +192,84 @@ export const meals = {
     },
     13: {
         name: "Ship",
-        hp: 25000,
+        hp: 27500,
         hardness: 1300,
         calories: 1e6,
         icon: "ship.png"
     },
     14: {
         name: "House",
-        hp: 42000,
+        hp: 46000,
         hardness: 2222,
         calories: 2.5e6,
         icon: "house.png"
     },
     15: {
         name: "Monster Truck",
-        hp: 64000,
+        hp: 70000,
         hardness: 3500,
         calories: 5e6,
         icon: "monstertruck.png"
     },
     16: {
         name: "Helicopter",
-        hp: 90000,
+        hp: 100000,
         hardness: 5000,
         calories: 10e6,
         icon: "helicopter.png"
     },
     17: {
         name: "Train",
-        hp: 150000,
+        hp: 169000,
         hardness: 7000,
         calories: 17e6,
         icon: "train.png"
     },
     18: {
         name: "Plane",
-        hp: 420420,
+        hp: 480420,
         hardness: 20420,
         calories: 77.777e6,
         icon: "airplane.png"
     },
     19: {
         name: "Space Shuttle",
-        hp: 700000,
+        hp: 800000,
         hardness: 40000,
         calories: 303e6,
         icon: "shuttle.png"
     },
     20: {
         name: "Skyscraper",
-        hp: 1.3e6,
+        hp: 1.5e6,
         hardness: 75000,
         calories: 800e6,
         icon: "skyscraper.png"
     },
     21: {
         name: "Pyramid",
-        hp: 2.2e6,
+        hp: 2.5e6,
         hardness: 120000,
         calories: 1.8e9,
         icon: "pyramid.png"
     },
     22: {
         name: "Village",
-        hp: 5e6,
+        hp: 6e6,
         hardness: 250000,
         calories: 6.6e9,
         icon: "village.png"
     },
     23: {
         name: "Small Mountain",
-        hp: 12e6,
+        hp: 14e6,
         hardness: 750000,
         calories: 15e9,
         icon: "small_mountain.png"
     },
     24: {
         name: "City",
-        hp: 25e6,
+        hp: 27.5e6,
         hardness: 2.4e6,
         calories: 40e9,
         icon: "city.png"

@@ -1,4 +1,4 @@
-import Decimal from "break_eternity.js";
+import Decimal, { type DecimalSource } from "break_eternity.js";
 import { get } from "svelte/store";
 import type JSONifier from "../savegame/JSONifier";
 import { game } from "../stores";
@@ -19,6 +19,10 @@ export default class Monster implements JSONifier{
         return this.mass.pow(0.5).mul(0.01);
     }
 
+    get size2(){
+        return this.softcappedSize;
+    }
+
     private get sizeCm(){
         return this.size.mul(100);
     }
@@ -30,10 +34,15 @@ export default class Monster implements JSONifier{
      */
     private get softcappedSize(){
         let size = this.size;
-        const softcap = 1_000_000;
 
-        if(size.lt(softcap)) return size;
-        size = Decimal.min(size, softcap).mul(size.div(softcap).pow(0.75)); //softcap size from 1,000 km on
+        for(const softcap of softCaps){
+            const from = new Decimal(softcap.from);
+            if(size.gte(from)){
+                const limitedSize = Decimal.min(size, from);
+                size = limitedSize.mul(size.div(from)).pow(softcap.power);
+            }
+        }
+
         return size;
     }
 
@@ -98,12 +107,12 @@ export const evolutions: MonsterEvolution[] = [
         icon: "hatchling.png"
     },
     {
-        score: 1500,
+        score: 1250,
         name: "Baby Monster",
         icon: "baby.png"
     },
     {
-        score: 5000,
+        score: 2700,
         name: "Young Monster",
         icon: "young.png"
     },
@@ -123,3 +132,23 @@ export const evolutions: MonsterEvolution[] = [
         icon: "old.png"
     }
 ];
+
+interface SizeSoftCap{
+    from: DecimalSource,
+    power: number
+}
+
+const softCaps: SizeSoftCap[] = [
+    {
+        from: 2_000,
+        power: 0.85
+    },
+    {
+        from: 1_000_000,
+        power: 0.75 / 0.85 //a total of ^0.75 from this point on
+    },
+    {
+        from: 1_392_684_000,
+        power: 0.95
+    }
+]

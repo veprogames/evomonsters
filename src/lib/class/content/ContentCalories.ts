@@ -14,8 +14,8 @@ export default class ContentCalories extends GameResource implements JSONifier{
         super();
         this.upgrades = {
             telekinesis: new CaloriesUpgrade({
-                getPrice: level => Decimal.pow(3.2, level).mul(1000),
-                getEffect: level => new Decimal(level > 0 ? 1 + 0.3 * level : 0),
+                getPrice: level => Decimal.pow(3.2, level).mul(500),
+                getEffect: level => new Decimal(level > 0 ? 1 + (1 / 3) * level : 0),
                 requiredAchievement: game.achievements.achievements.yummy,
                 title: "Telekinesis",
                 description: "Automatically bite",

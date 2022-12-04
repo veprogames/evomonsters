@@ -16,9 +16,8 @@ export default class ContentGenetic extends GameResource{
         const log = calories.log10();
         if(log.lt(12)) return new Decimal(0);
         //first GP at 1e12
-        return new Decimal(Decimal.max(0, Decimal.floor(log).sub(9)).div(3))
-            .mul(Decimal.pow(2, Decimal.max(0, log.sub(18)).div(6)))
-            .floor();
+        const baseGain = Decimal.pow(calories.div(1e14).max(1), 0.2).mul(log.sub(11)).floor();
+        return Decimal.max(baseGain.sub(this.totalThisRun), new Decimal(0)).floor();
     }
 
     /** The prestige mechanic that awards GP */
