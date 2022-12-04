@@ -93,7 +93,7 @@ export default class Monster implements JSONifier{
     }
 }
 
-interface MonsterEvolution{
+export interface MonsterEvolution{
     /** Required Evoscore */
     score: number,
     name: string,
@@ -107,17 +107,17 @@ export const evolutions: MonsterEvolution[] = [
         icon: "hatchling.png"
     },
     {
-        score: 1250,
+        score: 1000,
         name: "Baby Monster",
         icon: "baby.png"
     },
     {
-        score: 2700,
+        score: 2500,
         name: "Young Monster",
         icon: "young.png"
     },
     {
-        score: 7500,
+        score: 7000,
         name: "Adult Monster",
         icon: "adult.png"
     },
@@ -140,7 +140,7 @@ interface SizeSoftCap{
 
 const softCaps: SizeSoftCap[] = [
     {
-        from: 2_000,
+        from: 1_000,
         power: 0.85
     },
     {

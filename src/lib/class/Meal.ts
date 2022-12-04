@@ -150,42 +150,42 @@ export const meals = {
     },
     7: {
         name: "Fish",
-        hp: 1200,
+        hp: 1300,
         hardness: 58,
         calories: 8000,
         icon: "fish.png"
     },
     8: {
         name: "Chicken",
-        hp: 3000,
+        hp: 3300,
         hardness: 150,
         calories: 50000,
         icon: "chicken.png"
     },
     9: {
         name: "Sheep",
-        hp: 5000,
+        hp: 5500,
         hardness: 250,
         calories: 100000,
         icon: "sheep.png"
     },
     10: {
         name: "Cow",
-        hp: 7777,
+        hp: 9001,
         hardness: 333,
         calories: 199999,
         icon: "cow.png"
     },
     11: {
         name: "Elephant",
-        hp: 10000,
+        hp: 11111,
         hardness: 500,
         calories: 275000,
         icon: "elephant.png"
     },
     12: {
         name: "Car",
-        hp: 14500,
+        hp: 16666,
         hardness: 800,
         calories: 500000,
         icon: "car.png"

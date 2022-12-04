@@ -2,6 +2,7 @@ import Decimal from "break_eternity.js";
 import type JSONifier from "../../savegame/JSONifier";
 import type Game from "../Game";
 import GameResource from "../GameResource";
+import { evolutions } from "../Monster";
 import CaloriesUpgrade from "../upgrades/CaloriesUpgrade";
 import type Upgrade from "../upgrades/Upgrade";
 
@@ -15,8 +16,8 @@ export default class ContentCalories extends GameResource implements JSONifier{
         this.upgrades = {
             telekinesis: new CaloriesUpgrade({
                 getPrice: level => Decimal.pow(3.2, level).mul(500),
-                getEffect: level => new Decimal(level > 0 ? 1 + (1 / 3) * level : 0),
-                requiredAchievement: game.achievements.achievements.yummy,
+                getEffect: level => new Decimal(level > 0 ? 5 / 3 + (1 / 3) * level : 0),
+                requiredEvolution: evolutions[0],
                 title: "Telekinesis",
                 description: "Automatically bite",
                 effectDisplay: {
@@ -26,16 +27,16 @@ export default class ContentCalories extends GameResource implements JSONifier{
                 }
             }),
             strongTeeth: new CaloriesUpgrade({
-                getPrice: level => Decimal.pow(16, level).mul(4e6),
+                getPrice: level => Decimal.pow(16, level).mul(10e6),
                 getEffect: level => Decimal.pow(1.25, level),
-                requiredAchievement: game.achievements.achievements.mooh,
+                requiredEvolution: evolutions[2],
                 title: "Strong Teeth",
                 description: "Increase Bite Damage"
             }),
             piercing: new CaloriesUpgrade({
                 getPrice: level => Decimal.pow(20, level ** 1.1).mul(100e9),
                 getEffect: level => Decimal.pow(1.2, level),
-                requiredAchievement: game.achievements.achievements.village,
+                requiredEvolution: evolutions[3],
                 title: "Piercing",
                 description: "Decrease Food Hardness",
                 effectDisplay: {

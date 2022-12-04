@@ -13,5 +13,5 @@
 {#if isUnlocked}
     <UpgradeButton {upgrade} {icon} currencyIcon="./images/resources/calories.png"/>
 {:else}
-    <LockedUpgrade achievement={upgrade.requiredAchievement}/>
+    <LockedUpgrade evolution={upgrade.requiredEvolution}/>
 {/if}
