@@ -150,11 +150,7 @@ interface SizeSoftCap{
 const softCaps: SizeSoftCap[] = [
     {
         from: 1_000,
-        power: 0.8
-    },
-    {
-        from: 1_000_000,
-        power: 0.7 / 0.8 //a total of ^0.7 from this point on
+        power: 0.75
     },
     {
         from: 1_392_684_000,

@@ -24,7 +24,7 @@
             image: "earth.webp"
         },
         {
-            index: 34,
+            index: 33,
             image: "space.webp"
         }
     ].reverse();

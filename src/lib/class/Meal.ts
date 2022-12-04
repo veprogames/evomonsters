@@ -34,10 +34,18 @@ export default class Meal{
     constructor({name, hp, hardness, calories, icon}: MealDefinition){
         this.name = name;
         this._hp = new Decimal(hp);
-        this.currentHp = new Decimal(hp);
         this._hardness = new Decimal(hardness);
         this._calories = new Decimal(calories);
         this._icon = icon ?? "default.png";
+
+        // apply actual hp
+        try{
+            this.currentHp = this.hp;
+        }
+        catch(e){
+            //game is not defined yet, use uncalculated value from definition
+            this.currentHp = new Decimal(hp);
+        }
     }
 
     static from({name, hp, hardness, calories, icon}: MealDefinition){
@@ -303,50 +311,50 @@ export const meals = {
         name: "Large Moon City",
         hp: 200e6,
         hardness: 25e6,
-        calories: 1e12,
+        calories: 1.4e12,
         icon: "moon_city.png"
     },
     29: {
-        name: "Mount Everest",
+        name: "Large Mountain",
         hp: 350e6,
         hardness: 50e6,
-        calories: 1.9e12,
+        calories: 3e12,
         icon: "everest.png"
     },
     30: {
         name: "Medium Asteroid",
         hp: 800e6,
         hardness: 140e6,
-        calories: 5e12,
+        calories: 10e12,
         icon: "medium_asteroid.png"
     },
     31: {
         name: "Super-Mountain",
         hp: 1.5e9,
         hardness: 275e6,
-        calories: 12e12,
+        calories: 26e12,
         icon: "super_mountain.png"
     },
     32: {
-        name: "Comet",
+        name: "Asteroid Family",
         hp: 3e9,
         hardness: 600e6,
-        calories: 30e12,
-        icon: "comet.png"
-    },
-    33: {
-        name: "Asteroid Family",
-        hp: 6.6e9,
-        hardness: 1.3e9,
-        calories: 80e12,
+        calories: 70e12,
         icon: "asteroid_family.png"
     },
-    34: {
+    33: {
         name: "Tiny Planet",
+        hp: 6.6e9,
+        hardness: 1.3e9,
+        calories: 222e12,
+        icon: "tiny_planet.png"
+    },
+    34: {
+        name: "Moon",
         hp: 23e9,
         hardness: 3e9,
-        calories: 800e12,
-        icon: "tiny_planet.png"
+        calories: 2e15,
+        icon: "moon.png"
     },
     35: {
         name: "Moon",
