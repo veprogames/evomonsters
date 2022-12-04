@@ -4,6 +4,7 @@ import { generateMealDefinition } from "../mealgenerator";
 import { game } from "../stores";
 import Achievement from "./achievements/Achievement";
 import type Monster from "./Monster";
+import { EVO_SENIOR } from "./Monster";
 
 export interface MealDefinition {
     name: string,
@@ -55,12 +56,15 @@ export default class Meal{
     // any upgrades, boosts will be applied here
 
     get hp(){
-        return this._hp;
+        const g = get(game);
+        const senior = g.monster.hasEvolution(EVO_SENIOR) ? 1.26 : 1;
+        return this._hp.div(senior);
     }
 
     get hardness(){
         const g = get(game);
-        return this._hardness.div(g.calories.upgrades.piercing.effect);
+        const senior = g.monster.hasEvolution(EVO_SENIOR) ? 1.26 : 1;
+        return this._hardness.div(g.calories.upgrades.piercing.effect).div(senior);
     }
 
     get calories(){

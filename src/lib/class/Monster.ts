@@ -83,6 +83,10 @@ export default class Monster implements JSONifier{
         return index === -1 ? evolutions.length - 1 : index - 1;
     }
 
+    hasEvolution(evo: MonsterEvolution){
+        return this.evoMonsterScore.gt(evo.score);
+    }
+
     get evolution(): MonsterEvolution{
         return evolutions[this.evolutionIndex];
     }
@@ -136,6 +140,8 @@ export const evolutions: MonsterEvolution[] = [
     }
 ];
 
+export const EVO_SENIOR = evolutions[4];
+
 interface SizeSoftCap{
     from: DecimalSource,
     power: number
@@ -144,11 +150,11 @@ interface SizeSoftCap{
 const softCaps: SizeSoftCap[] = [
     {
         from: 1_000,
-        power: 0.85
+        power: 0.8
     },
     {
         from: 1_000_000,
-        power: 0.75 / 0.85 //a total of ^0.75 from this point on
+        power: 0.7 / 0.8 //a total of ^0.7 from this point on
     },
     {
         from: 1_392_684_000,
