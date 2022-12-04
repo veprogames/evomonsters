@@ -39,7 +39,10 @@ export default class Monster implements JSONifier{
             const from = new Decimal(softcap.from);
             if(size.gte(from)){
                 const limitedSize = Decimal.min(size, from);
-                size = limitedSize.mul(size.div(from)).pow(softcap.power);
+                size = limitedSize.mul(size.div(from).pow(softcap.power));
+            }
+            else{
+                break;
             }
         }
 
