@@ -134,13 +134,14 @@ export const evolutions: MonsterEvolution[] = [
         icon: "senior.png"
     },
     {
-        score: 27500,
+        score: 26000,
         name: "Old Monster",
         icon: "old.png"
     }
 ];
 
 export const EVO_SENIOR = evolutions[4];
+export const EVO_OLD = evolutions[5];
 
 interface SizeSoftCap{
     from: DecimalSource,

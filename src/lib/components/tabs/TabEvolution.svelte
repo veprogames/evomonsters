@@ -1,5 +1,5 @@
 <script>
-    import { EVO_SENIOR } from "../../class/Monster";
+    import { EVO_OLD, EVO_SENIOR } from "../../class/Monster";
     import { F } from "../../format";
 
     import { game } from "../../stores";
@@ -7,6 +7,7 @@
     $: nextEvolution = $game.monster.nextEvolution;
 
     $: senior = $game.monster.hasEvolution(EVO_SENIOR);
+    $: old = $game.monster.hasEvolution(EVO_OLD);
 </script>
 <div class="card-transparent flex flex-col items-center gap-2 max-w-sm">
     {#if nextEvolution}
@@ -27,6 +28,11 @@
     {#if senior}
         <p class="text-orange-400 font-semibold">
             Your Senior Monster feasts on Meals with great efficiency, reducing Meal HP and Hardness by x1.26
+        </p>
+    {/if}
+    {#if old}
+        <p class="text-orange-500 font-semibold">
+            Your Old Monster has a great Metabolism, doubling the Calories gained from each Meal
         </p>
     {/if}
     <p>

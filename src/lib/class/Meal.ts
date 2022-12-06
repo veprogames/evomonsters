@@ -4,7 +4,7 @@ import { generateMealDefinition } from "../mealgenerator";
 import { game } from "../stores";
 import Achievement from "./achievements/Achievement";
 import type Monster from "./Monster";
-import { EVO_SENIOR } from "./Monster";
+import { EVO_OLD, EVO_SENIOR } from "./Monster";
 
 export interface MealDefinition {
     name: string,
@@ -76,7 +76,9 @@ export default class Meal{
     }
 
     get calories(){
-        return this._calories;
+        const g = get(game);
+        const old = g.monster.hasEvolution(EVO_OLD) ? 2 : 1;
+        return this._calories.mul(old);
     }
 
     ///
@@ -357,45 +359,66 @@ export const meals = {
         icon: "moon.png"
     },
     35: {
-        name: "Moon",
-        hp: 60e9,
-        hardness: 15e9,
-        calories: 3e15,
-        icon: "moon.png"
-    },
-    36: {
         name: "Floating Civilization",
-        hp: 200e9,
-        hardness: 60e9,
-        calories: 13e15,
+        hp: 50e9,
+        hardness: 11e9,
+        calories: 8e15,
         icon: "world_bubble.png"
     },
-    37: {
+    36: {
         name: "Cheese Planet",
-        hp: 500e9,
-        hardness: 200e9,
-        calories: 40e15,
+        hp: 120e9,
+        hardness: 27e9,
+        calories: 32e15,
         icon: "cheese_planet.png"
     },
-    38: {
+    37: {
         name: "Space Monolith",
-        hp: 1.4e12,
-        hardness: 500e9,
-        calories: 150e15,
+        hp: 220e9,
+        hardness: 50e9,
+        calories: 128e15,
         icon: "monolith.png"
     },
-    39: {
+    38: {
         name: "Small Planet",
-        hp: 3e12,
-        hardness: 1.1e12,
-        calories: 450e15,
+        hp: 512e9,
+        hardness: 120e9,
+        calories: 512e15,
         icon: "small_planet.png"
     },
-    40: {
+    39: {
         name: "Megastructure",
-        hp: 5.5e12,
-        hardness: 1.6e12,
-        calories: 1e18,
+        hp: 1e12,
+        hardness: 250e9,
+        calories: 1.4e18,
         icon: "megastructure.png"
-    }
+    },
+    40: {
+        name: "Earthlike Planet",
+        hp: 1.9e12,
+        hardness: 500e9,
+        calories: 3e18,
+        icon: "small_planet.png"
+    },
+    41: {
+        name: "Small Gas Giant",
+        hp: 5e12,
+        hardness: 1.5e12,
+        calories: 10e18,
+        icon: "small_planet.png"
+    },
+    42: {
+        name: "Huge Terra",
+        hp: 8e12,
+        hardness: 2.5e12,
+        calories: 24e18,
+        icon: "small_planet.png"
+    },
+    43: {
+        name: "Gas Giant",
+        hp: 20e12,
+        hardness: 7.5e12,
+        calories: 80e18,
+        icon: "small_planet.png"
+    },
 } as {[key: number]: MealDefinition};
