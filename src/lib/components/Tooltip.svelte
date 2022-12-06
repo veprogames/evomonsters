@@ -6,7 +6,7 @@
 </script>
 
 <div bind:this={el} bind:clientWidth={w} class="scale-0 group-hover:scale-100 transition-transform
-    absolute w-32 md:w-40
+    absolute w-32 lg:w-52 md:w-40
     text-left card-less-transparent z-10 pointer-events-none"
     class:right={!rightOverflow}
     class:left={rightOverflow}>

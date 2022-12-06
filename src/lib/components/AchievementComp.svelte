@@ -21,6 +21,6 @@
 
 <style lang="postcss">
     div.unlocked{
-        @apply bg-slate-100 dark:bg-slate-500;
+        @apply bg-slate-500;
     }
 </style>
