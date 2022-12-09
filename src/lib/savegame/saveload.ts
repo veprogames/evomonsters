@@ -103,3 +103,8 @@ export function loadFromStorage(): Game|null{
     }
     return null;
 }
+
+export function hardResetGame(){
+    localStorage.removeItem("veprogames.evomonsters.game.default");
+    return new Game();
+}
