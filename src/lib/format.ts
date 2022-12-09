@@ -1,7 +1,7 @@
 import Decimal, { type DecimalSource } from "break_eternity.js";
-import * as ADNotations from "@antimatter-dimensions/notations";
-
-const notation = new ADNotations.StandardNotation();
+import { get } from "svelte/store";
+import gamenotations from "./gamenotations";
+import { game, settings } from "./stores";
 
 const distanceUnits: Array<[number, string]> = [
     [0.01, "cm"],
@@ -12,7 +12,30 @@ const distanceUnits: Array<[number, string]> = [
     [1_392_684_000, "Suns"]
 ]
 
+function FThousands(n: Decimal | number, places1000 = 0){
+    const p = n instanceof Decimal ? (n.lt(1000) ? places1000 : 0) : (n < 1000 ? places1000 : 0);
+    if(n instanceof Decimal){
+        n = n.toNumber();
+    }
+    return n.toLocaleString("en-US", {
+        minimumFractionDigits: p,
+        maximumFractionDigits: p
+    });
+}
+
 export function F(n: DecimalSource, places: number = 2, places1000: number = 0): string{
+    let notation: any;
+    try {
+        notation = get(settings).notation;
+    } catch (error) {
+        notation = gamenotations.standard;
+    }
+    if(n instanceof Decimal && n.lt(1e6)){
+        return FThousands(n, places1000);
+    }
+    if(typeof n === "number" && n < 1e6){
+        return FThousands(n, places1000);
+    }
     if(n instanceof Decimal || typeof n === "number"){
         n = n.toString();
     }

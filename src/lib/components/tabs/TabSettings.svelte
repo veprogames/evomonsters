@@ -1,7 +1,7 @@
 <script lang="ts">
     import { isMobile } from "../../../ismobile";
     import { getSaveCode, hardResetGame, loadFromStorage, loadGame, saveGame } from "../../savegame/saveload";
-    import { game } from "../../stores";
+    import { game, settings } from "../../stores";
 
     let importCode = "";
     let a: HTMLAnchorElement;
@@ -42,5 +42,7 @@
     <p>If you want to hard reset the Game, type 'I really want to hard reset!' into the textbox and double click 'Hard Reset'</p>
     <input bind:value={hardResetConfirmation}/>
     <button on:dblclick={hardReset}>Hard Reset</button>
+    <button on:click={() => $settings.setNotation("standard")}>Standard</button>
+    <button on:click={() => $settings.setNotation("emoji")}>Emoji</button>
     <p>Version {$game.versionPretty} ◦ Platform: {isMobile() ? "Mobile" : "Desktop"}</p>
 </div>
