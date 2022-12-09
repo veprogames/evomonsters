@@ -1,5 +1,6 @@
 <script lang="ts">
     import { isMobile } from "../../../ismobile";
+    import gamenotations from "../../gamenotations";
     import { getSaveCode, hardResetGame, loadFromStorage, loadGame, saveGame } from "../../savegame/saveload";
     import { game, settings } from "../../stores";
 
@@ -42,7 +43,10 @@
     <p>If you want to hard reset the Game, type 'I really want to hard reset!' into the textbox and double click 'Hard Reset'</p>
     <input bind:value={hardResetConfirmation}/>
     <button on:dblclick={hardReset}>Hard Reset</button>
-    <button on:click={() => $settings.setNotation("standard")}>Standard</button>
-    <button on:click={() => $settings.setNotation("emoji")}>Emoji</button>
+    <div class="flex gap-2 flex-wrap">
+        {#each gamenotations as notation}
+            <button on:click={() => $settings.setNotation(notation.name)}>{notation.name}</button>
+        {/each}
+    </div>
     <p>Version {$game.versionPretty} ◦ Platform: {isMobile() ? "Mobile" : "Desktop"}</p>
 </div>

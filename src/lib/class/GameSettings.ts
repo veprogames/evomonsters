@@ -5,11 +5,9 @@ export default class GameSettings implements JSONifier{
     readonly savedProps = ["notationName"];
 
     private _notation: any; // any of ADNotations
-    /** Store the key from gamenotations, use this to only save the name instead of the entire notation object */
-    private _notationName: string;
 
     constructor(){
-        this.setNotation("standard");
+        this.setNotation("Standard");
     }
 
     get notation(){
@@ -17,13 +15,13 @@ export default class GameSettings implements JSONifier{
     }
 
     get notationName(){
-        return this._notationName;
+        return this._notation.name;
     }
 
     setNotation(name: string){
-        if(gamenotations[name]){
-            this._notation = gamenotations[name];
-            this._notationName = name;
+        const notation = gamenotations.find(n => n.name === name);
+        if(notation){
+            this._notation = notation;
         }
     }
 

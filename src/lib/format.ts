@@ -28,7 +28,7 @@ export function F(n: DecimalSource, places: number = 2, places1000: number = 0):
     try {
         notation = get(settings).notation;
     } catch (error) {
-        notation = gamenotations.standard;
+        notation = gamenotations[0];
     }
     if(n instanceof Decimal && n.lt(1e6)){
         return FThousands(n, places1000);
