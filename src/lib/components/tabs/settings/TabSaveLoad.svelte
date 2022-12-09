@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { getSaveCode, hardResetGame, loadGame, saveGame } from "../../../savegame/saveload";
-    import { game } from "../../../stores";
+    import { getSaveCode, hardResetGame, loadGame, saveGame, saveSettings } from "../../../savegame/saveload";
+    import { game, settings } from "../../../stores";
 
     let importCode = "";
     let a: HTMLAnchorElement;
@@ -12,6 +12,11 @@
 
     function download(){
         a.click();
+    }
+
+    function manuallySave(){
+        saveGame($game);
+        saveSettings($settings);
     }
 
     function importGame(){
@@ -33,7 +38,7 @@
 </script>
 
 <div>
-    <button on:click={() => saveGame($game)}>Manually Save Game</button>
+    <button on:click={manuallySave}>Manually Save Game</button>
     <button on:click={download}>Download Savegame</button>
     <textarea class="w-full h-16" placeholder="Paste Code to import here" bind:value={importCode}></textarea>
     <button on:click={importGame}>Import from Textbox</button>

@@ -26,6 +26,6 @@ export default class GameSettings implements JSONifier{
     }
 
     revive(obj: any): void {
-        this.setNotation(obj.name ?? "");
+        this.setNotation(obj.notationName ?? "");
     }
 }
