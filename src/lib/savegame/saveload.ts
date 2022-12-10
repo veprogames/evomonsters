@@ -3,6 +3,9 @@ import Game from "../class/Game";
 import GameSettings from "../class/GameSettings";
 import type JSONifier from "./JSONifier";
 
+const GAME = "veprogames.evomonsters.game.default";
+const SETTINGS = "veprogames.evomonsters.settings";
+
 function implementsJSONifier(value: any): value is JSONifier{
     return typeof value === "object" &&
         "savedProps" in value;
@@ -73,13 +76,13 @@ export function getSaveCode(game: Game | GameSettings){
 
 export function saveGame(game: Game){
     const code = getSaveCode(game);
-    localStorage.setItem("veprogames.evomonsters.game.default", code);
+    localStorage.setItem(GAME, code);
     return code;
 }
 
 export function saveSettings(settings: GameSettings){
     const code = getSaveCode(settings);
-    localStorage.setItem("veprogames.evomonsters.settings", code);
+    localStorage.setItem(SETTINGS, code);
     return code;
 }
 
@@ -130,22 +133,22 @@ export function loadSettings(saveString: string){
 }
 
 export function loadFromStorage(): Game|null{
-    const item = localStorage.getItem("veprogames.evomonsters.game.default");
+    const item = localStorage.getItem(GAME);
     if(item){
-        return loadGame(localStorage.getItem("veprogames.evomonsters.game.default"));
+        return loadGame(localStorage.getItem(GAME));
     }
     return null;
 }
 
 export function loadSettingsFromStorage(): GameSettings|null{
-    const item = localStorage.getItem("veprogames.evomonsters.settings");
+    const item = localStorage.getItem(SETTINGS);
     if(item){
-        return loadSettings(localStorage.getItem("veprogames.evomonsters.settings"));
+        return loadSettings(localStorage.getItem(SETTINGS));
     }
     return null;
 }
 
 export function hardResetGame(){
-    localStorage.removeItem("veprogames.evomonsters.game.default");
+    localStorage.removeItem(GAME);
     return new Game();
 }
