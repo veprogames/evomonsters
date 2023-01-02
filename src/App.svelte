@@ -15,19 +15,27 @@
     import TabSettings from "./lib/components/tabs/TabSettings.svelte";
     import Tooltip from "./lib/components/Tooltip.svelte";
     import { F } from "./lib/format";
-    import { loadFromStorage, saveGame } from "./lib/savegame/saveload";
-    import { game, tabs } from "./lib/stores";
+    import { loadFromStorage, loadSettingsFromStorage, saveGame, saveSettings } from "./lib/savegame/saveload";
+    import { game, settings, tabs } from "./lib/stores";
 
     const loaded = loadFromStorage();
     if(loaded){
         $game = loaded;
     }
 
+    const loadedSettings = loadSettingsFromStorage();
+    if(settings){
+        $settings = loadedSettings;
+    }
+
     const ticker = new GameTicker();
 
     onMount(() => {
         ticker.start();
-        setInterval(() => saveGame($game), 60000);
+        setInterval(() => {
+            saveGame($game);
+            saveSettings($settings);
+        }, 60000);
     });
     onDestroy(() => ticker.stop());
 </script>

@@ -1,6 +1,10 @@
 import Decimal from "break_eternity.js";
 import Game from "../class/Game";
+import GameSettings from "../class/GameSettings";
 import type JSONifier from "./JSONifier";
+
+const GAME = "veprogames.evomonsters.game.default";
+const SETTINGS = "veprogames.evomonsters.settings";
 
 function implementsJSONifier(value: any): value is JSONifier{
     return typeof value === "object" &&
@@ -62,17 +66,23 @@ function reviver(this: any, key: any, value: any){
     return value;
 }
 
-export function getSavestringified(game: Game){
+export function getSavestringified(game: Game | GameSettings){
     return JSON.stringify(game, replacer);
 }
 
-export function getSaveCode(game: Game){
+export function getSaveCode(game: Game | GameSettings){
     return btoa(unescape(encodeURIComponent(getSavestringified(game))));
 }
 
 export function saveGame(game: Game){
     const code = getSaveCode(game);
-    localStorage.setItem("veprogames.evomonsters.game.default", code);
+    localStorage.setItem(GAME, code);
+    return code;
+}
+
+export function saveSettings(settings: GameSettings){
+    const code = getSaveCode(settings);
+    localStorage.setItem(SETTINGS, code);
     return code;
 }
 
@@ -80,11 +90,22 @@ function decodeSaveCode(encoded: string){
     return decodeURIComponent(escape(atob(encoded)));
 }
 
-export function loadGame(saveString: string){
+function parseSaveCode(encoded: string){
     let decoded: string, parsed: object;
     try{
-        decoded = decodeSaveCode(saveString);
+        decoded = decodeSaveCode(encoded);
         parsed = JSON.parse(decoded, reviver);
+    }
+    catch(e){
+        throw new Error("Cannot parse savecode");
+    }
+    return parsed;
+}
+
+export function loadGame(saveString: string){
+    let parsed: object;
+    try{
+        parsed = parseSaveCode(saveString);
     }
     catch(err){
         console.warn(err);
@@ -96,15 +117,38 @@ export function loadGame(saveString: string){
     return g;
 }
 
+export function loadSettings(saveString: string){
+    let parsed: object;
+    try{
+        parsed = parseSaveCode(saveString);
+    }
+    catch(err){
+        console.warn(err);
+        window.alert(err);
+    }
+    
+    let s = new GameSettings();
+    revive(parsed, s);
+    return s;
+}
+
 export function loadFromStorage(): Game|null{
-    const item = localStorage.getItem("veprogames.evomonsters.game.default");
+    const item = localStorage.getItem(GAME);
     if(item){
-        return loadGame(localStorage.getItem("veprogames.evomonsters.game.default"));
+        return loadGame(localStorage.getItem(GAME));
+    }
+    return null;
+}
+
+export function loadSettingsFromStorage(): GameSettings|null{
+    const item = localStorage.getItem(SETTINGS);
+    if(item){
+        return loadSettings(localStorage.getItem(SETTINGS));
     }
     return null;
 }
 
 export function hardResetGame(){
-    localStorage.removeItem("veprogames.evomonsters.game.default");
+    localStorage.removeItem(GAME);
     return new Game();
 }
