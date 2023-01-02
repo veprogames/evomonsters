@@ -23,7 +23,9 @@
         <AchievementComp achievement={achievements.endHunger} icon="./images/achievements/food.png"></AchievementComp>
     </div>
     <div class="achievement-row">
-        <AchievementComp achievement={achievements.mutated} icon="./images/resources/genetic.png"></AchievementComp>
+        <AchievementComp achievement={achievements.mutated} icon="./images/resources/genetic.png">
+            <p slot="description">Reach 1 Genetic Point<br/><span class="font-semibold text-blue-400">This will unlock "Max All" for Calorie Upgrades!</span></p>
+        </AchievementComp>
         <AchievementComp achievement={achievements.geneticSharpness} icon="./images/resources/genetic.png"></AchievementComp>
         <AchievementComp achievement={achievements.geneticFitness} icon="./images/resources/genetic.png"></AchievementComp>
     </div>

@@ -1,5 +1,7 @@
 import Decimal from "break_eternity.js";
+import { get } from "svelte/store";
 import type JSONifier from "../../savegame/JSONifier";
+import { game } from "../../stores";
 import type Game from "../Game";
 import GameResource from "../GameResource";
 import { evolutions } from "../Monster";
@@ -59,6 +61,19 @@ export default class ContentCalories extends GameResource implements JSONifier{
         super.prestige();
         for(const k of Object.keys(this.upgrades)){
             this.upgrades[k].level = 0;
+        }
+    }
+
+    get unlockedMaxAll(){
+        return get(game).achievements.achievements.mutated.unlocked;
+    }
+
+    maxAll(){
+        if(this.unlockedMaxAll){
+            const upgs = Object.values(this.upgrades).sort((u1, u2) => u1.price.lt(u2.price) ? 1 : -1); //sort by price desc
+            for(const u of upgs){
+                u.buyMax();
+            }
         }
     }
 }

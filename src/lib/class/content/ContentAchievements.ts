@@ -5,10 +5,6 @@ import CaloriesAchievement from "../achievements/CaloriesAchievement";
 import GPAchievement from "../achievements/GPAchievement";
 import MealAchievement from "../achievements/MealAchievement";
 
-interface AchievementMap{
-    [key: string]: Achievement
-}
-
 export default class ContentAchievements implements JSONifier{
     readonly savedProps: string[] = ["achievements"];
 
@@ -20,7 +16,7 @@ export default class ContentAchievements implements JSONifier{
         }
     }
 
-    achievements: AchievementMap = {
+    achievements = {
         yummy: new MealAchievement(2, "Yummy"),
         hungry: new MealAchievement(7, "Hungry"),
         halfADay: new CaloriesAchievement(new Decimal(1000), "Half a day"),

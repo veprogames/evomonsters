@@ -160,6 +160,10 @@ export default class Upgrade implements JSONifier{
         });
     }
 
+    buyMax(){
+        while(this.canAfford) this.buy();
+    }
+
     static checkAll(){
         this.eventTarget.dispatchEvent(new Event("check"));
     }

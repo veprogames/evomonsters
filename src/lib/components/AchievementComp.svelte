@@ -12,7 +12,9 @@
     <img src={icon} alt="Achievement Icon" class="w-16 h-16 rounded-md"/>
     <Tooltip>
         <p class="text-blue-400 font-bold">{achievement.title}</p>
-        <p>{achievement.description}</p>
+        <slot name="description">
+            <p>{achievement.description}</p>
+        </slot>
         {#if achievement.unlocked}
             <p class="text-green-400 font-bold">Unlocked!</p>
         {/if}
