@@ -5,6 +5,8 @@ import type Game from "../Game";
 
 type AchievementCondition = (game: Game) => boolean;
 
+type DescriptionCallback = () => string;
+
 export default class Achievement implements JSONifier{
     private static eventTarget = new EventTarget();
     readonly savedProps = ["unlocked"];
@@ -13,14 +15,18 @@ export default class Achievement implements JSONifier{
     
     unlocked: boolean = false;
     title: string;
-    description: string;
+    getDescription: string | DescriptionCallback;
 
-    constructor(condition: AchievementCondition, title: string, description: string = ""){
+    constructor(condition: AchievementCondition, title: string, getDescription: string | DescriptionCallback = ""){
         this.condition = condition;
         this.title = title;
-        this.description = description;
+        this.getDescription = getDescription;
 
         Achievement.eventTarget.addEventListener("check", () => this.check());
+    }
+
+    get description(){
+        return typeof this.getDescription === "function" ? this.getDescription() : this.getDescription;
     }
 
     private check(){
