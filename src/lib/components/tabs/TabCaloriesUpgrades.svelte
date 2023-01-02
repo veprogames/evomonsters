@@ -1,7 +1,19 @@
-<script>
+<script lang="ts">
+    import { onDestroy, onMount } from "svelte";
     import { game } from "../../stores";
 
     import CaloriesUpgradeButton from "../upgrades/CaloriesUpgradeButton.svelte";
+
+    function maxAll(){
+        $game.calories.maxAll();
+    }
+
+    function onKeyDown(ev: KeyboardEvent){
+        if(ev.key === "m") maxAll();
+    }
+
+    onMount(() => window.addEventListener("keydown", onKeyDown));
+    onDestroy(() => window.removeEventListener("keydown", onKeyDown));
 </script>
 
 <div class="flex flex-col items-center gap-4">
@@ -11,6 +23,6 @@
         <CaloriesUpgradeButton upgrade={$game.calories.upgrades.piercing} icon="./images/upgrades/piercing.png"/>
     </div>
     {#if $game.calories.unlockedMaxAll}
-        <button on:click={() => $game.calories.maxAll()}>Max All</button>
+        <button on:click={maxAll}>Max All (M)</button>
     {/if}
 </div>

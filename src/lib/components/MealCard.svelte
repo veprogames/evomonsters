@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onDestroy, onMount } from "svelte";
     import type ContentMeal from "../class/content/ContentMeal";
     import type Meal from "../class/Meal";
     import { F } from "../format";
@@ -18,6 +19,19 @@
     function next(){
         mealContent.next();
     }
+
+    function onKeyDown(ev: KeyboardEvent){
+        if(ev.key === "ArrowLeft") previous();
+        else if(ev.key === "ArrowRight") next();
+    };
+
+    onMount(() => {
+        window.addEventListener("keydown", onKeyDown);
+    });
+
+    onDestroy(() => {
+        window.removeEventListener("keydown", onKeyDown);
+    })
 </script>
 
 <div class="card-transparent flex flex-col items-center w-fit gap-1">
