@@ -10,5 +10,6 @@ export let game = writable(new Game());
 export let settings = writable(new GameSettings());
 
 export let tabs = writable({
-    caloriesTab: TabCaloriesUpgrades
+    tab: null,
+    caloriesTab: null
 });

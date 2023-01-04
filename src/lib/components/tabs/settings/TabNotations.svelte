@@ -13,8 +13,11 @@
     }
 </script>
 
-<div class="flex gap-2 flex-wrap">
-    {#each gamenotations as notation}
-        <button class:text-green-400={current === notation.name} on:click={() => setNotation(notation.name)}>{notation.name}</button>
-    {/each}
+<div class="max-w-sm">
+    <h2>Select Notation</h2>
+    <div class="flex gap-2 flex-wrap">
+        {#each gamenotations as notation}
+            <button class:text-green-400={current === notation.name} on:click={() => setNotation(notation.name)}>{notation.name}</button>
+        {/each}
+    </div>
 </div>

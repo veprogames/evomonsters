@@ -6,7 +6,15 @@
     $: achievements = $game.achievements.achievements;
 </script>
 
-<div class="flex justify-center gap-4 w-full flex-wrap h-80 overflow-y-scroll">
+<div class="card-transparent w-fit flex justify-center space-x-4 text-lg text-center mx-auto my-4">
+    <div>
+        <span class="stat green">Unlocked</span> {$game.achievements.countUnlocked} / {Object.values(achievements).length}
+    </div>
+    <div>
+        <span class="stat orange">%</span> {($game.achievements.percentComplete * 100).toFixed(0)}
+    </div>
+</div>
+<div class="flex justify-center gap-4 w-full flex-wrap">
     <div class="achievement-row">
         <AchievementComp achievement={achievements.yummy} icon="./images/achievements/plate.png"></AchievementComp>
         <AchievementComp achievement={achievements.hungry} icon="./images/achievements/plate.png"></AchievementComp>
